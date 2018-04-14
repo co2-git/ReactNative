@@ -1,6 +1,6 @@
 {
   "name": "ReactNative",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "electron main.js",
     "babel": "babel --out-dir dist/ app/",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "chokidar": "^2.0.3",
     "fix-path": "^2.1.0",
     "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
