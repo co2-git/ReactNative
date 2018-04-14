@@ -1,0 +1,8 @@
+// @flow
+
+declare type $AppBarOwnProps = {|
+  +app: $App,
+|};
+
+declare type $AppBarProps =
+  & $AppBarOwnProps;

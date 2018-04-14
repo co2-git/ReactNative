@@ -38,8 +38,8 @@ class Home extends PureComponent<$HomeProps, $HomeState> {
             />
           </div>
         )}
-        {map(this.state.apps, app => (
-          <AppCard app={app} key={app.path} />
+        {map(this.state.apps, (app, index) => (
+          <AppCard app={app} key={app.path} index={index} />
         ))}
       </div>
     </Page>

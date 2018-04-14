@@ -2,6 +2,7 @@
 
 declare type $AppCardOwnProps = {|
   +app: $App,
+  +index: number,
 |};
 
 declare type $AppCardProps =

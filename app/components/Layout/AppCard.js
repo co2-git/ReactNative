@@ -7,6 +7,7 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close';
 
 import Animated from '../Base/Animated';
 import {closeApp} from '../../redux/actions/appsActions';
+import {switchRoute} from '../../redux/actions/routerActions';
 
 class AppCard extends PureComponent<$AppCardProps, $AppCardState> {
   state = {expanded: false};
@@ -14,7 +15,7 @@ class AppCard extends PureComponent<$AppCardProps, $AppCardState> {
     <Animated rubberBand>
       <Card
         expanded={this.state.expanded}
-        onExpandChange={() => console.log('hello')}
+        onExpandChange={() => switchRoute(this.props.index + 1)}
         style={{marginBottom: 12}}
       >
         <CardHeader

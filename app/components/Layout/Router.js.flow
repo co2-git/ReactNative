@@ -1,12 +1,14 @@
 // @flow
 
+declare type $RouterConnectProps = {|
+  +apps: $App[],
+  +index: number,
+|};
+
 declare type $RouterOwnProps = {|
   +onToggleDrawer: () => void,
 |};
 
 declare type $RouterProps =
-  & $RouterOwnProps;
-
-declare type $RouterState = {|
-  index: number,
-|};
+  & $RouterOwnProps
+  & $RouterConnectProps;

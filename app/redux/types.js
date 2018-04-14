@@ -1,5 +1,11 @@
+// @flow
+
+// ERROR
 export const ERROR = 'RNRX/ERROR';
 export const CLEAR_ERROR = 'RNRX/ERROR/CLEAR';
+
+// ROUTER
+export const SWITCH_ROUTE = 'RNRX/ROUTER/SWITCH';
 
 // APPS
 export const OPEN_APP = 'RNRX/APPS/OPEN';

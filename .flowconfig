@@ -11,6 +11,8 @@
 
 [libs]
 ./flow/app.js.flow
+./app/components/App/App.js.flow
+./app/components/App/AppBar.js.flow
 ./app/components/Layout/AppCard.js.flow
 ./app/components/Layout/Header.js.flow
 ./app/components/Layout/Home.js.flow
