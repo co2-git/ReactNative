@@ -1,0 +1,13 @@
+// @flow
+
+declare type $LayoutConnectProps = {|
+  +error: ?Error,
+|};
+
+declare type $LayoutProps =
+  & $LayoutConnectProps
+  ; // eslint-disable-line semi-style
+
+declare type $LayoutState = {|
+  showDrawer: boolean,
+|};

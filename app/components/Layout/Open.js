@@ -1,3 +1,4 @@
+// @flow
 import {Card, CardHeader, CardActions} from 'material-ui/Card';
 import Popover from 'material-ui/Popover';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -9,8 +10,9 @@ import Init from './Init';
 import Terminal from '../Terminal/Console';
 import Animated from '../Base/Animated';
 
-class Open extends PureComponent {
+class Open extends PureComponent<$OpenProps, $OpenState> {
   state = {
+    anchorEl: null,
     create: null,
     expand: false,
     open: false,
@@ -39,12 +41,18 @@ class Open extends PureComponent {
           />
         </CardActions>
         <CardActions expandable>
-          {this.state.showTerminal && (
+          {this.state.showTerminal && this.state.create && (
             <Terminal
-              command={`react-native init ${this.state.create.name}`}
+              command={
+                `${
+                  this.state.create.expo ? 'create-react-native-app' : 'react-native init'
+                } ${
+                  this.state.create.name
+                }`
+              }
               cwd={this.state.create.base}
               inputHandlers={[
-                (data, ps) => {
+                (data: string, ps: $Emitter) => {
                   if (/Directory.+already exists.+Continue\?/i.test(data)) {
                     ps.emit('write', 'yes\n');
                   }
@@ -53,10 +61,10 @@ class Open extends PureComponent {
               onDone={() => {
                 setTimeout(() => {
                   this.setState({showTerminal: false}, () => {
-                    appsActions.openApp(path.join(
-                      this.state.create.base,
-                      this.state.create.name,
-                    ));
+                    const {create} = this.state;
+                    if (create) {
+                      appsActions.openApp(path.join(create.base, create.name));
+                    }
                   });
                 });
               }}
@@ -75,7 +83,7 @@ class Open extends PureComponent {
       </Popover>
     </Animated>
   );
-  handleClick = (event) => {
+  handleClick = (event: SyntheticEvent<HTMLButtonElement>) => {
     // This prevents ghost click.
     event.preventDefault();
 
@@ -89,7 +97,7 @@ class Open extends PureComponent {
       open: false,
     });
   };
-  onCreate = (options) => {
+  onCreate = (options: $Create) => {
     this.setState({
       create: options,
       expand: true,

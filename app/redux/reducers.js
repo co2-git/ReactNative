@@ -9,3 +9,4 @@ export {default as metroOptions} from './reducers/metroOptionsReducer';
 export {default as metroOutput} from './reducers/metroOutputReducer';
 export {default as metroStatus} from './reducers/metroStatusReducer';
 export {default as selected} from './reducers/selectedReducer';
+export {default as routerIndex} from './reducers/routerIndexReducer';
