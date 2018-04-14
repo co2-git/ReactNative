@@ -1,10 +1,13 @@
 {
   "name": "ReactNative",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "start": "electron main.js",
     "babel": "babel --out-dir dist/ app/",
-    "build": "bash scripts/build.sh $npm_package_name $npm_package_version"
+    "build": "bash scripts/build.sh $npm_package_name $npm_package_version",
+    "build:osx": "bash scripts/build.sh $npm_package_name $npm_package_version darwin",
+    "build:linux": "bash scripts/build.sh $npm_package_name $npm_package_version linux",
+    "build:windows": "bash scripts/build.sh $npm_package_name $npm_package_version win32"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
