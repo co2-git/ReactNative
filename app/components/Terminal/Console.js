@@ -9,30 +9,13 @@ import TermIcon from 'material-ui/svg-icons/action/code';
 import stripAnsi from 'strip-ansi';
 import DoneIcon from 'material-ui/svg-icons/action/done';
 import ErrorIcon from 'material-ui/svg-icons/alert/error';
-import {green800, redA700, red500} from 'material-ui/styles/colors';
+import {green800, redA700} from 'material-ui/styles/colors';
 
 import exec from '../../lib/exec';
 import Row from '../FlexBox/Row';
-import Text from '../Base/Text';
-
-type $InputHandler = (message: string, ps: EventEmitter) => void;
-
-type $TerminalProps = {
-  command: string,
-  cwd: string,
-  inputHandlers: $InputHandler[],
-};
-
-type $TerminalState = {
-  code: ?number,
-  done: boolean,
-  error: ?Error,
-  output: string[],
-  pid: ?number,
-};
 
 class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
-  ps: EventEmitter;
+  ps: $Emitter;
   state: $TerminalState = {
     code: null,
     done: false,
@@ -50,7 +33,6 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       }
     }));
     this.ps.on('error', (error) => {
-      console.log(error.stack);
       this.setState({error});
     });
     this.ps.on('done', () => this.setState({done: true, code: 0}, () => {
