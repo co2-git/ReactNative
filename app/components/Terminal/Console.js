@@ -49,7 +49,10 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
         inputHandler(data.message, this.ps);
       }
     }));
-    this.ps.on('error', error => this.setState({error}));
+    this.ps.on('error', (error) => {
+      console.log(error.stack);
+      this.setState({error});
+    });
     this.ps.on('done', () => this.setState({done: true, code: 0}, () => {
       if (typeof this.props.onDone === 'function') {
         this.props.onDone();
@@ -125,13 +128,13 @@ export default Terminal;
 
 const styles = {
   console: {
-    padding: 10,
     backgroundColor: '#000',
-    color: '#fff',
-    maxHeight: 300,
-    marginTop: 12,
     borderRadius: 8,
-    overflow: 'auto',
     boxShadow: '1px 1px 2px 2px rgba(0, 0, 0, 0.25)',
+    color: '#fff',
+    marginTop: 12,
+    maxHeight: 300,
+    overflow: 'auto',
+    padding: 10,
   },
 };
