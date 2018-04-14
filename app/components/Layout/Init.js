@@ -56,7 +56,7 @@ class Init extends PureComponent<$InitProps, $InitState> {
       </Row>
     </div>
   );
-  onChangeBase = event => this.setState({
+  onChangeBase = (event: SyntheticInputEvent<HTMLInputElement>) => this.setState({
     base: event.target.value,
     baseError: !event.target.value ? 'Please choose a base directory' : '',
   });
@@ -65,8 +65,11 @@ class Init extends PureComponent<$InitProps, $InitState> {
       .then((base = '') => this.setState({base, baseError: ''}))
       .catch(raiseError);
   };
-  onToggle = (event, isInputChecked) => this.setState({expo: isInputChecked});
-  onChangeName = event => this.setState({
+  onToggle = (
+    event: SyntheticInputEvent<HTMLInputElement>,
+    isInputChecked: boolean
+  ) => this.setState({expo: isInputChecked});
+  onChangeName = (event: SyntheticInputEvent<HTMLInputElement>) => this.setState({
     name: event.target.value,
     nameError: !event.target.value ? 'Please enter a name' : '',
   });

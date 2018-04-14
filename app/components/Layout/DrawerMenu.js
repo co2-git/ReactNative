@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
 import CodeIcon from 'material-ui/svg-icons/action/code';

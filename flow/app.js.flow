@@ -1,5 +1,8 @@
 // @flow
+import EventEmitter from 'events';
 import * as reducers from '../app/redux/reducers';
+
+declare type $Emitter = EventEmitter;
 
 // eslint-disable-next-line no-undef
 declare type $App = {
@@ -7,3 +10,9 @@ declare type $App = {
 };
 
 declare type $State = $Keys<typeof reducers>;
+
+declare type $Create = {|
+  name: string,
+  base: string,
+  expo: boolean,
+|};
