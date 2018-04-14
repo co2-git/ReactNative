@@ -11,3 +11,4 @@ electron-packager . $APP_NAME \
   --icon=assets/icons/icon \
   --out=release/$APP_VERSION \
   --ignore=release
+  --ignore=assets/screenshots
