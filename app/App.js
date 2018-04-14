@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import React from 'react';
 import {persistStore} from 'redux-persist';
 
-import Router from './components/Layout/Router';
+import Layout from './components/Layout/Layout';
 import store from './redux/store';
 
 const Loading = () => (
@@ -15,7 +15,7 @@ const Loading = () => (
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={<Loading />} persistor={persistStore(store)}>
-      <Router />
+      <Layout />
     </PersistGate>
   </Provider>
 );

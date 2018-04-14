@@ -10,7 +10,15 @@
 [include]
 
 [libs]
-/flow/*.flow.js
+./flow/app.js.flow
+./app/components/Layout/AppCard.js.flow
+./app/components/Layout/Header.js.flow
+./app/components/Layout/Home.js.flow
+./app/components/Layout/Init.js.flow
+./app/components/Layout/Layout.js.flow
+./app/components/Layout/Open.js.flow
+./app/components/Layout/Router.js.flow
+./app/components/Terminal/Console.js.flow
 
 [options]
 emoji=true
@@ -35,8 +43,6 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(<VERSION>\\)? *\\(si
 suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(<VERSION>\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
-
-unsafe.enable_getters_and_setters=true
 
 [version]
 ^0.69.0

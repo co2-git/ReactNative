@@ -1,0 +1,16 @@
+// @flow
+
+declare type $InitOwnProps = {|
+  +onCreate: (props: $Create) => void,
+|};
+
+declare type $InitProps =
+  & $InitOwnProps;
+
+declare type $InitState = {
+  base: string,
+  baseError: string,
+  expo: boolean,
+  name: string,
+  nameError: string,
+};

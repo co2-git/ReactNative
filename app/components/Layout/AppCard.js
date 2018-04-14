@@ -8,15 +8,7 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import Animated from '../Base/Animated';
 import {closeApp} from '../../redux/actions/appsActions';
 
-type $AppCardOwnProps = {
-  app: $App,
-};
-
-type $AppCardProps =
-  & $AppCardOwnProps
-  ;
-
-class AppCard extends PureComponent<$AppCardProps> {
+class AppCard extends PureComponent<$AppCardProps, $AppCardState> {
   state = {expanded: false};
   render = () => (
     <Animated rubberBand>

@@ -1,0 +1,13 @@
+// @flow
+
+declare type $AppCardOwnProps = {|
+  +app: $App,
+|};
+
+declare type $AppCardProps =
+  & $AppCardOwnProps
+  ;
+
+declare type $AppCardState = {|
+  expanded: boolean,
+|};
