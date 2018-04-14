@@ -1,15 +1,15 @@
 // @flow
+import {connect} from 'react-redux';
+import filter from 'lodash/filter';
+import map from 'lodash/map';
+import path from 'path';
 import React, {PureComponent} from 'react';
 import TextField from 'material-ui/TextField';
-import map from 'lodash/map';
-import filter from 'lodash/filter';
-import path from 'path';
-import {connect} from 'react-redux';
 
-import Header from './Header';
-import Page from './Page';
-import Open from './Open';
 import AppCard from './AppCard';
+import Header from './Header';
+import Open from './Open';
+import Page from './Page';
 
 class Home extends PureComponent<$HomeProps, $HomeState> {
   static getDerivedStateFromProps(nextProps, prevState) {

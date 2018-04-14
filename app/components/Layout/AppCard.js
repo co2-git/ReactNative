@@ -4,6 +4,7 @@ import {Card, CardHeader, CardActions} from 'material-ui/Card';
 import path from 'path';
 import RaisedButton from 'material-ui/RaisedButton';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
+import ViewIcon from 'material-ui/svg-icons/action/visibility';
 
 import Animated from '../Base/Animated';
 import {closeApp} from '../../redux/actions/appsActions';
@@ -25,6 +26,11 @@ class AppCard extends PureComponent<$AppCardProps, $AppCardState> {
           showExpandableButton={false}
         />
         <CardActions>
+          <RaisedButton
+            label="View app"
+            icon={<ViewIcon style={{marginTop: -4}} />}
+            onClick={() => switchRoute(this.props.index + 1)}
+          />
           <RaisedButton
             label="Remove app from list"
             icon={<CloseIcon style={{marginTop: -4}} />}

@@ -46,6 +46,12 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       code,
     }));
   };
+  componentDidUpdate = () => {
+    const terminal = document.getElementById('terminal');
+    if (terminal) {
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+  };
   render = () => (
     <Card>
       <CardHeader
@@ -90,7 +96,7 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
             {this.props.cwd}
           </Chip>
         </Row>
-        <div style={styles.console}>
+        <div style={styles.console} id="terminal">
           {map(this.state.output, (output, index) => {
             const lines = stripAnsi(output.message).split('\n');
             return (
