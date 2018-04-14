@@ -1,7 +1,8 @@
 // @flow
 import React, {PureComponent} from 'react';
-import {Card, CardHeader} from 'material-ui/Card';
+import {Card, CardHeader, CardActions} from 'material-ui/Card';
 import path from 'path';
+import Chip from 'material-ui/Chip';
 
 import Animated from '../Base/Animated';
 
@@ -28,6 +29,17 @@ class AppCard extends PureComponent<$AppCardProps> {
           actAsExpander
           showExpandableButton={false}
         />
+        <CardActions>
+          {(
+            this.props.app.info &&
+            this.props.app.info.dependencies &&
+            this.props.app.info.dependencies['react-native'] && (
+              <Chip>
+                React Native v{this.props.app.info.dependencies['react-native']}
+              </Chip>
+            )
+          )}
+        </CardActions>
       </Card>
     </Animated>
   );

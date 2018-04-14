@@ -5,7 +5,7 @@ This is a GUI for running React Native commands. It is built with electron so it
 
 # Downloads
 
-[v0.1.1](http://v1.1.1) is out! Choose your weapon.
+v0.1.2 is out! Choose your weapon.
 
 
 [<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=12GdTnRph5DMrAj5b8Kmntykm0lXbOcT-)
