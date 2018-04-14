@@ -14,4 +14,6 @@ This is a GUI for running React Native commands. It is built with electron so it
 
 # Screenshots
 
-![alt text](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Home.png)
+![Home](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Home.png)
+![Init app modal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Init_App_Modal.png)
+![Init app terminal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Init_App_Terminal.png)
