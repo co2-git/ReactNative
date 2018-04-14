@@ -2,9 +2,11 @@
 import React, {PureComponent} from 'react';
 import {Card, CardHeader, CardActions} from 'material-ui/Card';
 import path from 'path';
-import Chip from 'material-ui/Chip';
+import RaisedButton from 'material-ui/RaisedButton';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
 
 import Animated from '../Base/Animated';
+import {closeApp} from '../../redux/actions/appsActions';
 
 type $AppCardOwnProps = {
   app: $App,
@@ -30,15 +32,11 @@ class AppCard extends PureComponent<$AppCardProps> {
           showExpandableButton={false}
         />
         <CardActions>
-          {(
-            this.props.app.info &&
-            this.props.app.info.dependencies &&
-            this.props.app.info.dependencies['react-native'] && (
-              <Chip>
-                React Native v{this.props.app.info.dependencies['react-native']}
-              </Chip>
-            )
-          )}
+          <RaisedButton
+            label="Remove app from list"
+            icon={<CloseIcon style={{marginTop: -4}} />}
+            onClick={() => closeApp(this.props.app)}
+          />
         </CardActions>
       </Card>
     </Animated>
