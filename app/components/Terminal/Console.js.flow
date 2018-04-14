@@ -1,0 +1,21 @@
+// @flow
+
+type $InputHandler = (message: string, event: Event) => void;
+
+declare type $TerminalOwnProps = {|
+  +command: string,
+  +cwd?: string,
+  +inputHandlers?: $InputHandler[],
+  +onDone?: () => void,
+|};
+
+declare type $TerminalProps =
+  & $TerminalOwnProps;
+
+declare type $TerminalState = {|
+  code: ?number,
+  done: boolean,
+  error: ?Error,
+  output: string[],
+  pid: ?number,
+|};

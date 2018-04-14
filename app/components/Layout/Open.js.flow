@@ -1,0 +1,11 @@
+// @flow
+
+declare type $OpenProps = {};
+
+declare type $OpenState = {|
+  anchorEl: ?HTMLElement,
+  create: ?$Create,
+  expand: boolean,
+  open: boolean,
+  showTerminal: boolean,
+|};
