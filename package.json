@@ -1,0 +1,45 @@
+{
+  "name": "ReactNative",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "electron main.js",
+    "babel": "babel --out-dir dist/ app/"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.5",
+    "material-ui": "^0.20.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "react-swipeable-views": "^0.12.13",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-preset-electron": "^1.4.15",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.69.0",
+    "ignore-loader": "^0.1.2",
+    "react-test-renderer": "16.2.0"
+  },
+  "main": "main.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/co2-git/ReactNative.git"
+  },
+  "author": "francoisrvespa@gmail.com"
+}
