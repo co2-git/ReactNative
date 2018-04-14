@@ -1,22 +1,10 @@
-ReactNativeRX
+ReactNative
 ===
 
-# Run
+This is a GUI for running React Native commands. It is built with electron so it works on Linux, Mac and Windows.
 
-```javascript
-reactors run web
-reactors run desktop
-reactors run ios
-reactors run android
-```
+# Downloads
 
-# Upgrade
+[v0.1.1](http://v1.1.1) is out!
 
-```javascript
-reactors run web
-reactors run desktop
-reactors run ios
-reactors run android
-```
-
-More info about [reactors](https://github.com/co2-git/reactors).
+# Screenshots
