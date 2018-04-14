@@ -1,16 +1,18 @@
 {
   "name": "ReactNative",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "electron main.js",
     "babel": "babel --out-dir dist/ app/",
     "build": "bash scripts/build.sh $npm_package_name $npm_package_version",
     "build:osx": "yarn build darwin",
     "build:linux": "yarn build linux",
-    "build:windows": "yarn build win32"
+    "build:windows": "yarn build win32",
+    "build:all": "npm-run-parallel build:osx build:linux build:windows"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "chokidar": "^2.0.3",
     "fix-path": "^2.1.0",
     "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
@@ -27,6 +29,8 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.2",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-syntax-flow": "^6.18.0",
     "babel-preset-electron": "^1.4.15",
     "babel-preset-env": "^1.6.1",

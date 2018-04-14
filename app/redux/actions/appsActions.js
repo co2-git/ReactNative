@@ -1,10 +1,10 @@
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import {remote} from 'electron';
 import first from 'lodash/first';
 import find from 'lodash/find';
 
 import store from '../store';
 import * as types from '../types';
-import {read, stat} from '../../helpers/fsHelpers';
 
 export const openApp = async (appPath, cb) => {
   try {
@@ -13,7 +13,7 @@ export const openApp = async (appPath, cb) => {
       path = appPath;
     } else {
       const directories = await remote.dialog.showOpenDialog({
-        properties: ['openDirectory']
+        properties: ['openDirectory'],
       });
       if (directories) {
         path = first(directories);
@@ -29,46 +29,27 @@ export const openApp = async (appPath, cb) => {
           }
         });
       }
-      store.dispatch({type: types.OPEN_APP, payload: {path}});
-      store.dispatch({type: types.SELECT_APP, payload: {path}});
       try {
-        const stats = await stat(`${path}/package.json`);
-        store.dispatch({type: types.APP_HAS_PACKAGE, payload: {path, hasPackage: true}});
+        const info = await import(`${path}/package.json`);
+        store.dispatch({type: types.OPEN_APP, payload: {path, info}});
       } catch (error) {
-        if (error.code === 'ENOENT') {
-          store.dispatch({type: types.APP_HAS_PACKAGE, payload: {path, hasPackage: false}});
-        } else {
-          throw error;
-        }
+        store.dispatch({
+          type: types.ERROR,
+          payload: {
+            error: new Error(`${path} is not a React Native app`),
+          },
+        });
       }
     }
-  } catch (error) {
-    console.log(error.stack);
-    store.dispatch({type: types.ERROR, payload: {error}});
-  }
-}
-
-export const closeApp = async (app) => {
-  try {
-    store.dispatch({type: types.CLOSE_APP, payload: {app}});
   } catch (error) {
     store.dispatch({type: types.ERROR, payload: {error}});
   }
 };
 
-export const openBase = async () => {
+export const closeApp = async (app) => {
   try {
-    let path;
-    const directories = await remote.dialog.showOpenDialog({
-      properties: ['openDirectory']
-    });
-    if (directories) {
-      path = first(directories);
-    }
-    if (path) {
-    }
+    store.dispatch({type: types.CLOSE_APP, payload: {app}});
   } catch (error) {
-    console.log(error.stack);
     store.dispatch({type: types.ERROR, payload: {error}});
   }
 };
