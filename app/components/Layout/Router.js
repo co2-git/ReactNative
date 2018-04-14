@@ -37,7 +37,11 @@ class Router extends PureComponent<$RouterProps, $RoouterState> {
     <MuiThemeProvider>
       <div>
         <main style={styles.container}>
-          <div style={merge(styles.wrapper, {width: '500vh'})}>
+          <div
+            style={merge(styles.wrapper, {
+              width: '300vw',
+            })}
+          >
             <div style={styles.page}>
               <AppBar
                 iconElementLeft={(

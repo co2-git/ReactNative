@@ -7,6 +7,9 @@ import Avatar from 'material-ui/Avatar';
 import OpenFolderIcon from 'material-ui/svg-icons/file/folder-open';
 import TermIcon from 'material-ui/svg-icons/action/code';
 import stripAnsi from 'strip-ansi';
+import DoneIcon from 'material-ui/svg-icons/action/done';
+import ErrorIcon from 'material-ui/svg-icons/alert/error';
+import {green800, redA700, red500} from 'material-ui/styles/colors';
 
 import exec from '../../lib/exec';
 import Row from '../FlexBox/Row';
@@ -21,15 +24,22 @@ type $TerminalProps = {
 };
 
 type $TerminalState = {
-  output: string[],
-  pid: ?number,
+  code: ?number,
   done: boolean,
   error: ?Error,
+  output: string[],
+  pid: ?number,
 };
 
 class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
   ps: EventEmitter;
-  state: $TerminalState = {output: [], pid: null, done: false, error: null};
+  state: $TerminalState = {
+    code: null,
+    done: false,
+    error: null,
+    output: [],
+    pid: null,
+  };
   componentDidMount = () => {
     const {command, cwd, inputHandlers = []} = this.props;
     this.ps = exec(command, {cwd});
@@ -40,12 +50,16 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       }
     }));
     this.ps.on('error', error => this.setState({error}));
-    this.ps.on('done', () => this.setState({done: true}, () => {
+    this.ps.on('done', () => this.setState({done: true, code: 0}, () => {
       if (typeof this.props.onDone === 'function') {
         this.props.onDone();
       }
     }));
-    this.ps.on('failed', () => this.setState({done: true, error: new Error('Status closed')}));
+    this.ps.on('failed', code => this.setState({
+      done: true,
+      error: new Error('Status closed'),
+      code,
+    }));
   };
   render = () => (
     <Card>
@@ -67,6 +81,25 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
             <Avatar>PID</Avatar>
             {this.state.pid}
           </Chip>
+          {typeof this.state.code === 'number' && (
+            <Chip
+              backgroundColor={this.state.code === 0 ? green800 : redA700}
+            >
+              <Avatar
+                backgroundColor={this.state.code === 0 ? green800 : redA700}
+                icon={
+                  this.state.code === 0 ? (
+                    <DoneIcon />
+                  ) : (
+                    <ErrorIcon />
+                  )
+                }
+              />
+              {this.state.code > 0 && (
+                <span style={{color: 'white'}}>{this.state.code}</span>
+              )}
+            </Chip>
+          )}
           <Chip>
             <Avatar icon={<OpenFolderIcon />} />
             {this.props.cwd}

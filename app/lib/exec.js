@@ -3,14 +3,15 @@ import Emitter from 'events';
 
 const $spawn = (cmd, options = {}) => {
   const emitter = new Emitter();
-  const {cwd = process.cwd()} = options;
   setTimeout(() => {
     const [entry, ...bits] = cmd.trim().split(/\s+/);
     const ps = spawn(entry, bits, options);
+    let done = false;
     emitter.emit('pid', ps.pid);
     ps
       .on('error', error => emitter.emit('error', error))
-      .on('exit', status => {
+      .on('exit', (status) => {
+        done = true;
         if (status === 0) {
           emitter.emit('done');
         } else {
@@ -18,10 +19,25 @@ const $spawn = (cmd, options = {}) => {
         }
       })
       .on('close', (status) => {
-        emitter.emit('failed', status);
+        if (!done) {
+          done = true;
+          if (status === 0) {
+            emitter.emit('done');
+          } else {
+            emitter.emit('failed', status);
+          }
+        }
       });
-    ps.stdout.on('data', data => emitter.emit('data', {std: 'out', buffer: data, message: data.toString()}));
-    ps.stderr.on('data', data => emitter.emit('data', {std: 'err', buffer: data, message: data.toString()}));
+    ps.stdout.on('data', data => emitter.emit('data', {
+      std: 'out',
+      buffer: data,
+      message: data.toString(),
+    }));
+    ps.stderr.on('data', data => emitter.emit('data', {
+      std: 'err',
+      buffer: data,
+      message: data.toString(),
+    }));
     emitter.on('write', message => ps.stdin.write(message));
     emitter.on('kill', () => $spawn(`kill -9 ${ps.pid}`));
   });
