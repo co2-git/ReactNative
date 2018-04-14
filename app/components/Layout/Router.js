@@ -8,7 +8,6 @@ import get from 'lodash/get';
 import IconButton from 'material-ui/IconButton';
 import map from 'lodash/map';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
-import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import path from 'path';
 import React, {PureComponent} from 'react';
@@ -17,6 +16,7 @@ import TextField from 'material-ui/TextField';
 
 import {clearError} from '../../redux/actions/errorsActions';
 import AppCard from './AppCard';
+import DrawerMenu from './DrawerMenu';
 import Index from './Index';
 import merge from '../../styles/mixins/merge';
 import styles from './Router.styles';
@@ -76,8 +76,8 @@ class Router extends PureComponent<$RouterProps, $RoouterState> {
             <IconButton>
               <CloseIcon onClick={this.handleToggle} />
             </IconButton>
+            <DrawerMenu />
           </div>
-          <MenuItem>Menu Item</MenuItem>
         </Drawer>
         <Snackbar
           open={this.props.error instanceof Error}

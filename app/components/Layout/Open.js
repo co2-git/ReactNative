@@ -6,8 +6,8 @@ import path from 'path';
 
 import * as appsActions from '../../redux/actions/appsActions';
 import Init from './Init';
-import styles from './Open.styles';
 import Terminal from '../Terminal/Console';
+import Animated from '../Base/Animated';
 
 class Open extends PureComponent {
   state = {
@@ -17,7 +17,7 @@ class Open extends PureComponent {
     showTerminal: false,
   };
   render = () => (
-    <div>
+    <Animated jello>
       <Card style={{marginBottom: 12}} expanded={this.state.expand}>
         <CardHeader
           title="Open React Native app"
@@ -73,7 +73,7 @@ class Open extends PureComponent {
       >
         <Init onCreate={this.onCreate} />
       </Popover>
-    </div>
+    </Animated>
   );
   handleClick = (event) => {
     // This prevents ghost click.

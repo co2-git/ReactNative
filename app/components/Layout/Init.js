@@ -10,6 +10,7 @@ import Toggle from 'material-ui/Toggle';
 import {raiseError} from '../../redux/actions/errorsActions';
 import {pickFile} from '../../helpers/fsHelpers';
 import Row from '../FlexBox/Row';
+import Animated from '../Base/Animated';
 
 class Init extends PureComponent<$InitProps, $InitState> {
   state = {
@@ -20,7 +21,7 @@ class Init extends PureComponent<$InitProps, $InitState> {
     nameError: '',
   };
   render = () => (
-    <div style={{margin: 12}}>
+    <Animated jello style={{margin: 12}}>
       <Row style={{marginBottom: 12}}>
         <IconButton>
           <NameIcon />
@@ -54,7 +55,7 @@ class Init extends PureComponent<$InitProps, $InitState> {
           />
         </div>
       </Row>
-    </div>
+    </Animated>
   );
   onChangeBase = event => this.setState({
     base: event.target.value,

@@ -1,4 +1,5 @@
 import React from 'react';
+import omit from 'lodash/omit';
 
 const effects = [
   'bounce',
@@ -81,13 +82,15 @@ const effects = [
 
 const Animated = (props) => {
   const names = ['animated'];
+  const remove = [];
   for (const effect of effects) {
     if (effect in props) {
       names.push(effect);
+      remove.push(effect);
     }
   }
   return (
-    <div className={names.join(' ')}>
+    <div className={names.join(' ')} {...omit(props, remove)}>
       {props.children}
     </div>
   );

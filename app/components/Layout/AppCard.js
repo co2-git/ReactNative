@@ -16,7 +16,7 @@ type $AppCardProps =
 class AppCard extends PureComponent<$AppCardProps> {
   state = {expanded: false};
   render = () => (
-    <Animated bounce>
+    <Animated rubberBand>
       <Card
         expanded={this.state.expanded}
         onExpandChange={() => console.log('hello')}
