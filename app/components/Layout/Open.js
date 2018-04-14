@@ -41,7 +41,13 @@ class Open extends PureComponent {
         <CardActions expandable>
           {this.state.showTerminal && (
             <Terminal
-              command={`react-native init ${this.state.create.name}`}
+              command={
+                `${
+                  this.state.create.expo ? 'create-react-native-app' : 'react-native init'
+                } ${
+                  this.state.create.name
+                }`
+              }
               cwd={this.state.create.base}
               inputHandlers={[
                 (data, ps) => {
