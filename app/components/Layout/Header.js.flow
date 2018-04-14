@@ -1,0 +1,8 @@
+// @flow
+
+declare type $HeaderOwnProps = {|
+  +onToggle: () => void,
+|};
+
+declare type $HeaderProps =
+  & $HeaderOwnProps;

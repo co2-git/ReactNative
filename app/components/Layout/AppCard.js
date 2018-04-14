@@ -4,25 +4,19 @@ import {Card, CardHeader, CardActions} from 'material-ui/Card';
 import path from 'path';
 import RaisedButton from 'material-ui/RaisedButton';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
+import ViewIcon from 'material-ui/svg-icons/action/visibility';
 
 import Animated from '../Base/Animated';
 import {closeApp} from '../../redux/actions/appsActions';
+import {switchRoute} from '../../redux/actions/routerActions';
 
-type $AppCardOwnProps = {
-  app: $App,
-};
-
-type $AppCardProps =
-  & $AppCardOwnProps
-  ;
-
-class AppCard extends PureComponent<$AppCardProps> {
+class AppCard extends PureComponent<$AppCardProps, $AppCardState> {
   state = {expanded: false};
   render = () => (
     <Animated rubberBand>
       <Card
         expanded={this.state.expanded}
-        onExpandChange={() => console.log('hello')}
+        onExpandChange={() => switchRoute(this.props.index + 1)}
         style={{marginBottom: 12}}
       >
         <CardHeader
@@ -32,6 +26,11 @@ class AppCard extends PureComponent<$AppCardProps> {
           showExpandableButton={false}
         />
         <CardActions>
+          <RaisedButton
+            label="View app"
+            icon={<ViewIcon style={{marginTop: -4}} />}
+            onClick={() => switchRoute(this.props.index + 1)}
+          />
           <RaisedButton
             label="Remove app from list"
             icon={<CloseIcon style={{marginTop: -4}} />}
