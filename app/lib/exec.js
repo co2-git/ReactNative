@@ -2,7 +2,8 @@
 import {spawn} from 'child_process';
 import Emitter from 'events';
 
-const $spawn = (cmd: string, options: $ExecOptions = {}) => {
+// eslint-disable-next-line camelcase
+const $spawn = (cmd: string, options: child_process$spawnOpts = {}) => {
   const emitter = new Emitter();
   let ps;
   setTimeout(() => {

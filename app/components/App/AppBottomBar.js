@@ -14,37 +14,37 @@ const AppBottomBar = () => (
     <BottomNavigation>
       <BottomNavigationItem
         label="Info"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<InfoIcon />}
       />
       <BottomNavigationItem
         label="Start"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<PlayIcon />}
       />
       <BottomNavigationItem
         label="Android"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<AndroidIcon />}
       />
       <BottomNavigationItem
         label="iOS"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<i className="icon-apple" style={{fontSize: 24, color: '#777', marginTop: -3}} />}
       />
       <BottomNavigationItem
         label="Upgrade"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<UpgradeIcon />}
       />
       <BottomNavigationItem
         label="Native"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<SmartPhoneIcon />}
       />
       <BottomNavigationItem
         label="Eject"
-        onClick={() => this.select(0)}
+        onClick={() => {}}
         icon={<EjectIcon />}
       />
     </BottomNavigation>
