@@ -36,3 +36,19 @@ export const lightInfoMessage = {
   marginLeft: adjustWithCard,
   marginRight: adjustWithCard,
 };
+
+export const appTopBarStyle = {
+  flexShrink: 0,
+};
+
+export const appMainStyle = {
+  flexGrow: 2,
+  overflow: 'hidden',
+  boxSizing: 'border-box',
+};
+
+export const appTabStyle = {
+  overflow: 'auto',
+  boxSizing: 'border-box',
+  height: 'calc(100vh - 120px)',
+};
