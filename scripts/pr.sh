@@ -6,4 +6,10 @@ getBranchName() {
   echo $branch_name
 }
 
-hub pull-request -b $1 -m $(getBranchName) | echo
+BRANCH=$(getBranchName)
+ISSUE=${BRANCH##feature/}
+ISSUE=${ISSUE##bug/}
+
+git commit --allow-empty -am "Fix #$ISSUE"
+git push
+hub pull-request -o -b $1 -m $(getBranchName)
