@@ -6,6 +6,4 @@ getBranchName() {
   echo $branch_name
 }
 
-PR_CMD="$(hub pull-request -b $1 -m $(getBranchName))"
-
-echo $PR_CMD
+hub pull-request -b $1 -m $(getBranchName) | open
