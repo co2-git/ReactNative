@@ -1,14 +1,15 @@
 // @flow
-import React, {PureComponent} from 'react';
-import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
 import LogIcon from 'material-ui/svg-icons/content/content-paste';
 import PackageIcon from 'material-ui/svg-icons/content/archive';
+import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
+import React, {PureComponent} from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
 import {gutter} from '../../styles/vars/metrics';
-import RunAndroid from './Run';
+import AndroidLogs from './Logs';
 import IconWithLabel from '../Base/IconWithLabel';
 import Row from '../FlexBox/Row';
+import RunAndroid from './Run';
 
 class AndroidHome extends PureComponent<$AndroidHomeProps, $AndroidHomeState> {
   state = {
@@ -33,8 +34,11 @@ class AndroidHome extends PureComponent<$AndroidHomeProps, $AndroidHomeState> {
           onClick={() => this.selectIndex(2)}
         />
       </Row>
-      <SwipeableViews index={this.state.index}>
+      <SwipeableViews
+        index={this.state.index}
+      >
         <RunAndroid app={this.props.app} />
+        <AndroidLogs app={this.props.app} />
       </SwipeableViews>
     </div>
   );

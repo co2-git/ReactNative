@@ -7,4 +7,4 @@ ISSUE=$3
 git co $VERSION
 git pull
 git co -b "$TYPE/$ISSUE"
-git push
+git push --set-upstream origin "$TYPE/$ISSUE"

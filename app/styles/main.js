@@ -3,7 +3,7 @@ import {
   grey500,
 } from 'material-ui/styles/colors';
 
-import {adjustWithCard} from './vars/metrics';
+import * as metrics from './vars/metrics';
 
 export const pageStyle = {
   boxSizing: 'border-box',
@@ -33,8 +33,8 @@ export const lightInfoMessage = {
   color: grey500,
   fontSize: '105%',
   fontStyle: 'italic',
-  marginLeft: adjustWithCard,
-  marginRight: adjustWithCard,
+  marginLeft: metrics.adjustWithCard,
+  marginRight: metrics.adjustWithCard,
 };
 
 export const appTopBarStyle = {
@@ -51,4 +51,9 @@ export const appTabStyle = {
   overflow: 'auto',
   boxSizing: 'border-box',
   height: 'calc(100vh - 120px)',
+};
+
+export const logLevelToggleStyle = {
+  padding: metrics.gutter,
+  flexGrow: 2,
 };

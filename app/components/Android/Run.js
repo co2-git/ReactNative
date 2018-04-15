@@ -9,7 +9,6 @@ import React, {PureComponent} from 'react';
 import {adjustWithCard} from '../../styles/vars/metrics';
 import {lightInfoMessage, linkStyle} from '../../styles/main';
 import AndroidRunOptions from './RunOptions';
-import Animated from '../Base/Animated';
 import Terminal from '../Terminal/Console';
 
 class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
@@ -20,7 +19,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
   };
   terminal: Terminal;
   render = () => (
-    <Animated rubberBand>
+    <div>
       <Card>
         <CardHeader
           actAsExpander
@@ -71,7 +70,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
           )}
         </CardText>
       </Card>
-    </Animated>
+    </div>
   );
   onActionClick = () => {
     if (this.state.running) {

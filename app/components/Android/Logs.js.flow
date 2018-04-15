@@ -1,0 +1,21 @@
+// @flow
+
+declare type $AndroidLogsOwnProps = {|
+  +app: $App,
+|};
+
+declare type $AndroidLogsProps =
+  & $AndroidLogsOwnProps;
+
+declare type $AndroidLogsState = {|
+  errors: boolean,
+  fatal: boolean,
+  info: boolean,
+  running: boolean,
+  showTerminal: boolean,
+  warnings: boolean,
+|};
+
+declare type $LevelChanger = {
+  [level: string]: boolean,
+};
