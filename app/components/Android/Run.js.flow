@@ -1,0 +1,16 @@
+// @flow
+
+declare type $RunAndroidOwnProps = {|
+  +app: $App,
+|};
+
+declare type $RunAndroidProps =
+  & $RunAndroidOwnProps;
+
+declare type $RunAndroidState = {|
+  options: {
+    [key: string]: any,
+  },
+  running: boolean,
+  showTerminal: boolean,
+|};

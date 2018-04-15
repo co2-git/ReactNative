@@ -1,0 +1,13 @@
+// @flow
+
+declare type $AppBottomBarConnectProps = {|
+  +index: number,
+|};
+
+declare type $AppBottomOwnProps = {|
+  +app: $App,
+|};
+
+declare type $AppBottomBarProps =
+  & $AppBottomOwnProps
+  & $AppBottomBarConnectProps;

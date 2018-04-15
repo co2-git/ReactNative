@@ -1,0 +1,11 @@
+// @flow
+
+declare type $IconWithLabelOwnProps = {|
+  +icon: React$Element<*>,
+  +label: string,
+  +onClick?: () => void,
+  +style?: Object,
+|};
+
+declare type $IconWithLabelProps =
+  & $IconWithLabelOwnProps;

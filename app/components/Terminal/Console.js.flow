@@ -7,6 +7,7 @@ declare type $TerminalOwnProps = {|
   +cwd?: string,
   +inputHandlers?: $InputHandler[],
   +onDone?: () => void,
+  +onFail?: (code: number) => void,
 |};
 
 declare type $TerminalProps =

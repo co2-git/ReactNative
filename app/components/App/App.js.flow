@@ -4,5 +4,10 @@ declare type $AppOwnProps = {|
   +app: $App,
 |};
 
+declare type $AppConnectProps = {|
+  +index: number,
+|};
+
 declare type $AppProps =
-  & $AppOwnProps;
+  & $AppOwnProps
+  & $AppConnectProps;
