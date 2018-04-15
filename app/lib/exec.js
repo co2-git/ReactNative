@@ -43,7 +43,9 @@ const $spawn = (cmd: string, options: child_process$spawnOpts = {}) => {
         message: data.toString(),
       }));
       emitter.on('write', message => ps.stdin.write(message));
-      emitter.on('kill', () => $spawn(`kill -9 ${ps.pid}`));
+      emitter.on('kill', () => {
+        ps.kill('SIGKILL');
+      });
     } catch (error) {
       if (emitter) {
         emitter.emit('error', error);

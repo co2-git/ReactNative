@@ -1,0 +1,12 @@
+// @flow
+
+declare type $AndroidHomeOwnProps = {|
+  +app: $App,
+|};
+
+declare type $AndroidHomeProps =
+  & $AndroidHomeOwnProps;
+
+declare type $AndroidHomeState = {|
+  index: number,
+|};

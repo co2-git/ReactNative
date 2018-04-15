@@ -1,3 +1,10 @@
+import {
+  lightBlue800,
+  grey500,
+} from 'material-ui/styles/colors';
+
+import {adjustWithCard} from './vars/metrics';
+
 export const pageStyle = {
   boxSizing: 'border-box',
   height: '100vh',
@@ -14,4 +21,18 @@ export const consoleStyle = {
   maxHeight: 300,
   overflow: 'auto',
   padding: 10,
+};
+
+export const linkStyle = {
+  color: lightBlue800,
+  fontWeight: 'bold',
+  cursor: 'pointer',
+};
+
+export const lightInfoMessage = {
+  color: grey500,
+  fontSize: '105%',
+  fontStyle: 'italic',
+  marginLeft: adjustWithCard,
+  marginRight: adjustWithCard,
 };

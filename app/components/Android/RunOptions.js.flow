@@ -1,0 +1,14 @@
+// @flow
+
+declare type $AndroidRunOptionsOwnProps = {|
+  +onChange: (key: string, option: $CliOptions, value: any) => void,
+|};
+
+declare type $AndroidRunOptionsProps =
+  & $AndroidRunOptionsOwnProps;
+
+declare type $AndroidRunOptionsState = {|
+  options: {
+    [key: string]: any,
+  },
+|};

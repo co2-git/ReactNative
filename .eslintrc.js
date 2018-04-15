@@ -8,6 +8,7 @@ module.exports = {
     "max-len": [1, 100, 2, {ignoreComments: true}],
     "object-curly-spacing": ["error", "never"],
     "no-restricted-syntax": 0,
+    "guard-for-in": 0,
 
     // Flow
     "flowtype/boolean-style": [

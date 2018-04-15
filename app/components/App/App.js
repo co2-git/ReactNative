@@ -7,6 +7,7 @@ import AppBar from './AppBar';
 import AppBottomBar from './AppBottomBar';
 import Info from '../ReactNative/Info';
 import Page from '../Layout/Page';
+import AndroidHome from '../Android/Home';
 
 const App = ({app, index}: $AppProps) => (
   <Page style={{display: 'flex', flexDirection: 'column'}}>
@@ -22,7 +23,7 @@ const App = ({app, index}: $AppProps) => (
           Start
         </div>
         <div>
-          Android
+          <AndroidHome app={app} />
         </div>
         <div>
           iOS
