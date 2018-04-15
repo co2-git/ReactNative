@@ -12,7 +12,8 @@
     "eslint": "eslint app --fix",
     "test": "yarn eslint && yarn flow",
     "flow": "flow",
-    "pr": "bash scripts/pr.sh v$npm_package_version"
+    "pr": "bash scripts/pr.sh v$npm_package_version",
+    "fix": "yarn test && yarn pr"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
