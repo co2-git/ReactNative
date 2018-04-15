@@ -3,38 +3,39 @@ import {connect} from 'react-redux';
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
+import {appMainStyle, appTabStyle, appTopBarStyle} from '../../styles/main';
+import AndroidHome from '../Android/Home';
 import AppBar from './AppBar';
 import AppBottomBar from './AppBottomBar';
 import Info from '../ReactNative/Info';
 import Page from '../Layout/Page';
-import AndroidHome from '../Android/Home';
 
 const App = ({app, index}: $AppProps) => (
   <Page style={{display: 'flex', flexDirection: 'column'}}>
-    <div style={{flexShrink: 0}}>
+    <div style={appTopBarStyle}>
       <AppBar app={app} />
     </div>
-    <div style={{flexGrow: 2, overflow: 'auto'}}>
+    <div style={appMainStyle}>
       <SwipeableViews index={index}>
-        <div>
+        <div style={appTabStyle}>
           <Info app={app} />
         </div>
-        <div>
+        <div style={appTabStyle}>
           Start
         </div>
-        <div>
+        <div style={appTabStyle}>
           <AndroidHome app={app} />
         </div>
-        <div>
+        <div style={appTabStyle}>
           iOS
         </div>
-        <div>
+        <div style={appTabStyle}>
           Upgrade
         </div>
-        <div>
+        <div style={appTabStyle}>
           Native
         </div>
-        <div>
+        <div style={appTabStyle}>
           Eject
         </div>
       </SwipeableViews>
