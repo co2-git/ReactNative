@@ -5,28 +5,30 @@ GUI client for React Native. It is built with electron so it works on Linux, Mac
 
 # Downloads
 
-v0.1.3 is out! Choose your weapon.
+v0.1.4 is out! Choose your weapon.
 
 
-[<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=15M08_V1IIHmME0sDNECLM_uxJ5PT2YRD)
-[<img alt="Windows"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/120px-Windows_logo_-_2012_derivative.svg.png" />](https://drive.google.com/open?id=1dxvGoWwnnre3n9n5o-lgDEEYlTK_YXUu)
-[<img alt="Linux" src="http://www.linuxscrew.com/wp-content/uploads/2007/11/120px-crystal_128_penguin.png" />](https://drive.google.com/open?id=1RDc510X2OutlwmdVZGRZMKAnp8Y2PDSK)
+[<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=11RAaB8DVhgSytUIDvG80zLEcd7FMLiIe)
+[<img alt="Windows"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/120px-Windows_logo_-_2012_derivative.svg.png" />](https://drive.google.com/open?id=19wpU7GTZ2bIuOQ-f0Sz83Ql0_5uYa51w)
+[<img alt="Linux" src="http://www.linuxscrew.com/wp-content/uploads/2007/11/120px-crystal_128_penguin.png" />](https://drive.google.com/open?id=1k3pOql-XGQXbff7fdXI5zpsfoU0C3u63)
+
+# Docs
+
+- [Install instructions](https://github.com/co2-git/ReactNative/wiki/Install)
 
 # Screenshots
 
 ## Home screen
 
-![Home](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.2/Home.png)
+![Home](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.4/Home.png)
 
 ## Init app
 
-### Form modal
-
 ![Init app modal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Init_App_Modal.png)
 
-### Interactive terminal
+## App info
 
-![Init app terminal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Init_App_Terminal.png)
+![App info](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.4/Info.png)
 
 ## More
 
