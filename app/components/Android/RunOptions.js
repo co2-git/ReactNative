@@ -25,18 +25,19 @@ class AndroidRunOptions extends PureComponent<$AndroidRunOptionsProps, $AndroidR
             <div key={key}>
               <Toggle
                 label={option.label || startCase(key)}
-                toggled={option.default}
                 labelStyle={{color: '#777'}}
-                value={this.state.options[key]}
-                onChange={(event: SyntheticInputEvent<HTMLInputElement>) => {
-                  const {value} = event.target;
+                toggled={this.state.options[key]}
+                onToggle={(
+                  event: SyntheticUIEvent<HTMLInputElement>,
+                  isInputChecked: boolean,
+                ) => {
                   this.setState({
                     options: {
                       ...this.state.options,
-                      [key]: value,
+                      [key]: isInputChecked,
                     },
                   }, () => {
-                    this.props.onChange(key, option, value);
+                    this.props.onChange(key, option, isInputChecked);
                   });
                 }}
               />
