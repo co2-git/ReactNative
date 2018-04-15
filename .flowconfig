@@ -16,6 +16,7 @@
 ./flow/app.js.flow
 ./app/components/App/App.js.flow
 ./app/components/App/AppBar.js.flow
+./app/components/App/AppBottomBar.js.flow
 ./app/components/Base/Animated.js.flow
 ./app/components/FlexBox/Flex.js.flow
 ./app/components/Layout/AppCard.js.flow
