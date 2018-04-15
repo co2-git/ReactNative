@@ -1,0 +1,23 @@
+// @flow
+
+declare type $InfoOwnProps = {|
+  +app: $App,
+|};
+
+declare type $InfoConnectProps = {|
+  +info: {|
+    +environment: {|
+      [key: string]: string,
+    |},
+    +packages: {|
+      [package: string]: {|
+        +installed: string,
+        +wanted: string,
+      |},
+    |},
+  |},
+|};
+
+declare type $InfoProps =
+  & $InfoOwnProps
+  & InfoConnectProps;
