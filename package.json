@@ -11,7 +11,8 @@
     "make:all": "npm-run-parallel make:osx make:linux make:windows",
     "eslint": "eslint app --fix",
     "test": "yarn eslint && yarn flow",
-    "flow": "flow"
+    "flow": "flow",
+    "publish": "yarn test"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
