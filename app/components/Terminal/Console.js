@@ -36,18 +36,41 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
     this.ps.on('error', (error) => {
       this.setState({error});
     });
-    this.ps.on('done', () => this.setState({done: true, code: 0}, () => {
-      if (typeof this.props.onDone === 'function') {
-        this.props.onDone();
+    this.ps.on('done', async () => {
+      if (typeof this.props.onVerifyDone === 'function') {
+        try {
+          await this.props.onVerifyDone(this.state.output);
+          this.setState({done: true, code: 0}, () => {
+            if (typeof this.props.onDone === 'function') {
+              this.props.onDone(this.state.output);
+            }
+          });
+        } catch (error) {
+          this.setState({
+            done: true,
+            error: new Error('Status closed'),
+            code: -1000,
+          }, () => {
+            if (typeof this.props.onFail === 'function') {
+              this.props.onFail(-1000, this.state.output);
+            }
+          });
+        }
+      } else {
+        this.setState({done: true, code: 0}, () => {
+          if (typeof this.props.onDone === 'function') {
+            this.props.onDone(this.state.output);
+          }
+        });
       }
-    }));
+    });
     this.ps.on('failed', code => this.setState({
       done: true,
       error: new Error('Status closed'),
       code,
     }, () => {
       if (typeof this.props.onFail === 'function') {
-        this.props.onFail(code);
+        this.props.onFail(code, this.state.output);
       }
     }));
   };
@@ -66,9 +89,7 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
     <Card initiallyExpanded>
       <CardHeader
         title={this.props.command}
-        subtitle={`Embedded terminal (${
-          (this.state.pid && !this.state.done) ? 'Running' : 'Done'}
-        )`}
+        subtitle={this.makeSubtitle()}
         avatar={<TermIcon />}
         actAsExpander
         showExpandableButton
@@ -124,6 +145,19 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
     </Card>
   );
   onKill = () => this.ps.emit('kill');
+  makeSubtitle = (): string => {
+    let message = 'Embedded terminal (';
+    if (this.state.pid && !this.state.done) {
+      message += 'Running';
+    } else {
+      message += 'Done';
+      if (this.state.code !== 0) {
+        message += ' with errors';
+      }
+    }
+    message += ')';
+    return message;
+  }
   stop = () => {
     if (!this.state.done) {
       this.ps.emit('kill');

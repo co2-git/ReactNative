@@ -6,17 +6,24 @@ declare type $TerminalOwnProps = {|
   +command: string,
   +cwd?: string,
   +inputHandlers?: $InputHandler[],
-  +onDone?: () => void,
-  +onFail?: (code: number) => void,
+  +onDone?: (output: $Output[]) => void,
+  +onFail?: (code: number, output: $Output[]) => void,
+  +onVerifyDone?: (output: $Output[]) => Promise<void>,
 |};
 
 declare type $TerminalProps =
   & $TerminalOwnProps;
 
+declare type $Output = {|
+  buffer: Buffer,
+  message: string,
+  std: 'out' | 'err',
+|};
+
 declare type $TerminalState = {|
   code: ?number,
   done: boolean,
   error: ?Error,
-  output: string[],
+  output: $Output[],
   pid: ?number,
 |};

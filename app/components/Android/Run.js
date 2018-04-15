@@ -59,6 +59,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
             <Terminal
               command={this.makeCommand()}
               cwd={this.props.app.path}
+              onVerifyDone={this.onVerifyDone}
               onDone={() => this.setState({running: false})}
               onFail={() => this.setState({running: false})}
               ref={(terminal) => {
@@ -94,7 +95,20 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
       [key]: value,
     },
   });
-  makeCommand = () => {
+  onVerifyDone = (output: $Output[]): Promise<void> => new Promise(async (resolve, reject) => {
+    const messages = [];
+    for (const singleOutput of output) {
+      messages.push(singleOutput.message);
+    }
+    if (
+      /FAILURE: Build failed with an exception/.test(messages.join('')) ||
+      /BUILD FAILED/.test(messages.join(''))
+    ) {
+      reject(new Error('Build failed'));
+    }
+    resolve();
+  });
+  makeCommand = (): string => {
     const cmd = 'react-native run-android';
     const options = [];
     for (const option in this.state.options) {
