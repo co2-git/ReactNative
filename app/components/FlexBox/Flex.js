@@ -1,8 +1,5 @@
+// @flow
 import React from 'react';
-
-type $FlexProps = {
-  children: any,
-};
 
 const makeStyle = (props: $FlexProps) => {
   const {style: propsStyle = {}} = props;

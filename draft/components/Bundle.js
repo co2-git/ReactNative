@@ -120,9 +120,7 @@ class Bundle extends PureComponent {
   );
 }
 
-const selector = state => {
-  return {bundle: state.bundle};
-}
+const selector = state => ({bundle: state.bundle});
 
 export default connect(selector)(Bundle);
 

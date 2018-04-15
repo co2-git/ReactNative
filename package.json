@@ -8,7 +8,9 @@
     "build:osx": "yarn build darwin",
     "build:linux": "yarn build linux",
     "build:windows": "yarn build win32",
-    "build:all": "npm-run-parallel build:osx build:linux build:windows"
+    "build:all": "npm-run-parallel build:osx build:linux build:windows",
+    "eslint": "eslint app --fix",
+    "test": "yarn eslint"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

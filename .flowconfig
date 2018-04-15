@@ -13,6 +13,8 @@
 ./flow/app.js.flow
 ./app/components/App/App.js.flow
 ./app/components/App/AppBar.js.flow
+./app/components/Base/Animated.js.flow
+./app/components/FlexBox/Flex.js.flow
 ./app/components/Layout/AppCard.js.flow
 ./app/components/Layout/Header.js.flow
 ./app/components/Layout/Home.js.flow
@@ -23,6 +25,7 @@
 ./app/components/Layout/Router.js.flow
 ./app/components/ReactNative/Info.js.flow
 ./app/components/Terminal/Console.js.flow
+./app/lib/exec.js.flow
 
 [options]
 emoji=true
