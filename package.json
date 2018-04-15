@@ -13,7 +13,8 @@
     "test": "yarn eslint && yarn flow",
     "flow": "flow",
     "pr": "bash scripts/pr.sh v$npm_package_version",
-    "fix": "yarn test && yarn pr"
+    "fix": "yarn test && yarn pr",
+    "branch": "bash scripts/branch.sh v$npm_package_version"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
