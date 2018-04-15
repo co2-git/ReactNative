@@ -19,6 +19,7 @@
 ./app/components/Layout/Init.js.flow
 ./app/components/Layout/Layout.js.flow
 ./app/components/Layout/Open.js.flow
+./app/components/Layout/Page.js.flow
 ./app/components/Layout/Router.js.flow
 ./app/components/Terminal/Console.js.flow
 
