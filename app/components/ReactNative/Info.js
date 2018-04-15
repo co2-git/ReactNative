@@ -1,15 +1,15 @@
-import React, {PureComponent} from 'react';
+// @flow
 import {Card, CardHeader, CardText} from 'material-ui/Card';
-import map from 'lodash/map';
-import keys from 'lodash/keys';
-import TextField from 'material-ui/TextField';
 import {connect} from 'react-redux';
-import get from 'lodash/get';
+import CircularProgress from 'material-ui/CircularProgress';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
+import React, {PureComponent} from 'react';
+import TextField from 'material-ui/TextField';
 
-import exec from '../../lib/exec';
 import {getInfo} from '../../redux/actions/infoActions';
 
-class Info extends PureComponent {
+class Info extends PureComponent<$InfoProps> {
   componentDidMount = () => {
     getInfo(this.props.app);
   };
@@ -33,6 +33,9 @@ class Info extends PureComponent {
               />
             </div>
           ))}
+          {!this.props.info && (
+            <CircularProgress />
+          )}
         </CardText>
       </Card>
       <Card>
@@ -46,10 +49,10 @@ class Info extends PureComponent {
           {Boolean(this.props.info) && map(keys(this.props.info.packages), key => (
             <div key={key}>
               <TextField
-                disabled
-                hintText={this.props.info.packages[key].wanted}
                 defaultValue={this.props.info.packages[key].installed}
+                disabled
                 floatingLabelText={`${key} (wanted: ${this.props.info.packages[key].wanted})`}
+                hintText={this.props.info.packages[key].wanted}
               />
             </div>
           ))}

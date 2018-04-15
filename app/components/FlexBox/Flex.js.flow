@@ -1,0 +1,22 @@
+// @flow
+
+type $FlexDirection =
+  & 'column'
+  & 'row';
+
+declare type $FlexReactProps = {
+  children: any,
+  style?: Object,
+};
+
+declare type $FlexOwnProps = {|
+  +between?: boolean,
+  +column?: boolean,
+  +direction?: $FlexDirection,
+  +flexDirection?: $FlexDirection,
+  +row?: boolean,
+|};
+
+declare type $FlexProps =
+  & $FlexReactProps
+  & $FlexOwnProps;

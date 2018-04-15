@@ -1,8 +1,6 @@
 import * as types from '../types';
 import store from '../store';
 
-import exec from '../../lib/exec';
-
 export const run = async (app) => {
   const onError = (error) => {
     store.dispatch({

@@ -67,7 +67,7 @@ class Init extends PureComponent<$InitProps, $InitState> {
   };
   onToggle = (
     event: SyntheticInputEvent<HTMLInputElement>,
-    isInputChecked: boolean
+    isInputChecked: boolean,
   ) => this.setState({expo: isInputChecked});
   onChangeName = (event: SyntheticInputEvent<HTMLInputElement>) => this.setState({
     name: event.target.value,

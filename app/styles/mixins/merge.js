@@ -2,9 +2,10 @@ import compact from 'lodash/compact';
 
 const merge = (...styles) => {
   const transformed = {};
-  styles.forEach((style) => {
+  const realStyles = compact(styles);
+  for (const style of realStyles) {
     Object.assign(transformed, style);
-  });
+  }
   return transformed;
 };
 

@@ -1,16 +1,17 @@
 // @flow
-import map from 'lodash/map';
-import React, {PureComponent} from 'react';
 import {Card, CardHeader, CardActions} from 'material-ui/Card';
-import Chip from 'material-ui/Chip';
+import {green800, redA700} from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
-import OpenFolderIcon from 'material-ui/svg-icons/file/folder-open';
-import TermIcon from 'material-ui/svg-icons/action/code';
-import stripAnsi from 'strip-ansi';
+import Chip from 'material-ui/Chip';
 import DoneIcon from 'material-ui/svg-icons/action/done';
 import ErrorIcon from 'material-ui/svg-icons/alert/error';
-import {green800, redA700} from 'material-ui/styles/colors';
+import map from 'lodash/map';
+import OpenFolderIcon from 'material-ui/svg-icons/file/folder-open';
+import React, {PureComponent} from 'react';
+import stripAnsi from 'strip-ansi';
+import TermIcon from 'material-ui/svg-icons/action/code';
 
+import {consoleStyle} from '../../styles/main';
 import exec from '../../lib/exec';
 import Row from '../FlexBox/Row';
 
@@ -96,7 +97,7 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
             {this.props.cwd}
           </Chip>
         </Row>
-        <div style={styles.console} id="terminal">
+        <div style={consoleStyle} id="terminal">
           {map(this.state.output, (output, index) => {
             const lines = stripAnsi(output.message).split('\n');
             return (
@@ -113,16 +114,3 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
 }
 
 export default Terminal;
-
-const styles = {
-  console: {
-    backgroundColor: '#000',
-    borderRadius: 8,
-    boxShadow: '1px 1px 2px 2px rgba(0, 0, 0, 0.25)',
-    color: '#fff',
-    marginTop: 12,
-    maxHeight: 300,
-    overflow: 'auto',
-    padding: 10,
-  },
-};
