@@ -3,6 +3,10 @@
 declare type $LogLevelToggleOwnProps = {|
   +color: string,
   +label: string,
+  +onToggle: (
+    event: SyntheticUIEvent<HTMLInputElement>,
+    checked: boolean,
+  ) => void,
   +value: boolean,
 |};
 

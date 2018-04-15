@@ -82,6 +82,9 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
   };
   componentWillUnmount = () => {
     this.ps.removeAllListeners('data');
+    this.ps.removeAllListeners('error');
+    this.ps.removeAllListeners('done');
+    this.ps.removeAllListeners('failed');
     this.ps.emit('kill');
     this.ps = null;
   };

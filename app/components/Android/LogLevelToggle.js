@@ -13,6 +13,7 @@ const LogLevelToggle = (props: $LogLevelToggleProps) => (
       label={props.label}
       labelPosition="right"
       toggled={props.value}
+      onToggle={props.onToggle}
     />
   </Paper>
 );

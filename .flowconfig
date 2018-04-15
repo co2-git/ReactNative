@@ -16,6 +16,7 @@
 ./flow/app.js.flow
 ./app/components/Android/Home.js.flow
 ./app/components/Android/LogLevelToggle.js.flow
+./app/components/Android/Logs.js.flow
 ./app/components/Android/Run.js.flow
 ./app/components/Android/RunOptions.js.flow
 ./app/components/App/App.js.flow

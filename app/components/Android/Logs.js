@@ -9,15 +9,15 @@ import LogLevelToggle from './LogLevelToggle';
 import Row from '../FlexBox/Row';
 import Terminal from '../Terminal/Console';
 
-class AndroidLogs extends PureComponent {
+class AndroidLogs extends PureComponent<$AndroidLogsProps, $AndroidLogsState> {
   terminal: Terminal;
   state = {
-    info: false,
-    warnings: false,
     errors: true,
     fatal: true,
+    info: false,
     running: false,
     showTerminal: false,
+    warnings: true,
   };
   render = () => (
     <Card>
@@ -38,21 +38,45 @@ class AndroidLogs extends PureComponent {
           <div>
             <Row between style={{marginBottom: gutter}}>
               <LogLevelToggle
+                onToggle={(
+                  event: SyntheticUIEvent<HTMLInputElement>,
+                  checked: boolean,
+                ) => {
+                  this.changeLogLevel({info: checked});
+                }}
                 label="Info"
                 value={this.state.info}
                 color={colors.infoColor}
               />
               <LogLevelToggle
+                onToggle={(
+                  event: SyntheticUIEvent<HTMLInputElement>,
+                  checked: boolean,
+                ) => {
+                  this.changeLogLevel({warnings: checked});
+                }}
                 label="Warnings"
                 value={this.state.warnings}
                 color={colors.warningColor}
               />
               <LogLevelToggle
+                onToggle={(
+                  event: SyntheticUIEvent<HTMLInputElement>,
+                  checked: boolean,
+                ) => {
+                  this.changeLogLevel({errors: checked});
+                }}
                 label="Errors"
                 value={this.state.errors}
                 color={colors.errorColor}
               />
               <LogLevelToggle
+                onToggle={(
+                  event: SyntheticUIEvent<HTMLInputElement>,
+                  checked: boolean,
+                ) => {
+                  this.changeLogLevel({fatal: checked});
+                }}
                 label="Fatal errors"
                 value={this.state.fatal}
                 color={colors.dangerColor}
@@ -88,6 +112,16 @@ class AndroidLogs extends PureComponent {
       this.setState({showTerminal: true, running: true});
     }
   };
+  changeLogLevel = (level: $LevelChanger) => {
+    this.terminal.stop();
+    setTimeout(() => {
+      this.setState({showTerminal: false, ...level}, () => {
+        setTimeout(() => {
+          this.setState({showTerminal: true, running: true});
+        }, 500);
+      });
+    }, 750);
+  };
   makeCommand = (): string => {
     let command = 'adb logcat --dividers *:';
     if (this.state.info) {
@@ -99,7 +133,7 @@ class AndroidLogs extends PureComponent {
     if (this.state.errors) {
       command += 'E';
     }
-    if (this.state.fatals) {
+    if (this.state.fatal) {
       command += 'F';
     }
     return command;
