@@ -1,0 +1,10 @@
+// @flow
+
+declare type $LogLevelToggleOwnProps = {|
+  +color: string,
+  +label: string,
+  +value: boolean,
+|};
+
+declare type $LogLevelToggleProps =
+  & $LogLevelToggleOwnProps;
