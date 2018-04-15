@@ -6,6 +6,9 @@
 ; Ignore polyfills
 .*/Libraries/polyfills/.*
 
+; Ignore relase
+.*/release/.*
+
 
 [include]
 
@@ -25,7 +28,6 @@
 ./app/components/Layout/Router.js.flow
 ./app/components/ReactNative/Info.js.flow
 ./app/components/Terminal/Console.js.flow
-./app/lib/exec.js.flow
 
 [options]
 emoji=true

@@ -4,13 +4,14 @@
   "scripts": {
     "start": "electron main.js",
     "babel": "babel --out-dir dist/ app/",
-    "build": "bash scripts/build.sh $npm_package_name $npm_package_version",
-    "build:osx": "yarn build darwin",
-    "build:linux": "yarn build linux",
-    "build:windows": "yarn build win32",
-    "build:all": "npm-run-parallel build:osx build:linux build:windows",
+    "make": "bash scripts/build.sh $npm_package_name $npm_package_version",
+    "make:osx": "yarn make darwin",
+    "make:linux": "yarn make linux",
+    "make:windows": "yarn make win32",
+    "make:all": "npm-run-parallel make:osx make:linux make:windows",
     "eslint": "eslint app --fix",
-    "test": "yarn eslint"
+    "test": "yarn eslint && yarn flow",
+    "flow": "flow"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

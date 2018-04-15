@@ -20,4 +20,4 @@ declare type $InfoConnectProps = {|
 
 declare type $InfoProps =
   & $InfoOwnProps
-  & InfoConnectProps;
+  & $InfoConnectProps;
