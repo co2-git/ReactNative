@@ -5,12 +5,12 @@ GUI client for React Native. It is built with electron so it works on Linux, Mac
 
 # Downloads
 
-v0.1.2 is out! Choose your weapon.
+v0.1.3 is out! Choose your weapon.
 
 
-[<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=10mNTPIkciCO3VkkUY_HjCLORsRZDc3lJ)
-[<img alt="Windows"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/120px-Windows_logo_-_2012_derivative.svg.png" />](https://drive.google.com/open?id=120US9Yz6VownTAS6x2Ts_im6HdK4xO8H)
-[<img alt="Linux" src="http://www.linuxscrew.com/wp-content/uploads/2007/11/120px-crystal_128_penguin.png" />](https://drive.google.com/open?id=1-uZPb7VMFt0K8A9-P9ybmYRReLNZY-g2)
+[<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=15M08_V1IIHmME0sDNECLM_uxJ5PT2YRD)
+[<img alt="Windows"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/120px-Windows_logo_-_2012_derivative.svg.png" />](https://drive.google.com/open?id=1dxvGoWwnnre3n9n5o-lgDEEYlTK_YXUu)
+[<img alt="Linux" src="http://www.linuxscrew.com/wp-content/uploads/2007/11/120px-crystal_128_penguin.png" />](https://drive.google.com/open?id=1RDc510X2OutlwmdVZGRZMKAnp8Y2PDSK)
 
 # Screenshots
 
@@ -27,6 +27,10 @@ v0.1.2 is out! Choose your weapon.
 ### Interactive terminal
 
 ![Init app terminal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Init_App_Terminal.png)
+
+## More
+
+[View more screenshots!](https://github.com/co2-git/ReactNative/wiki/Screenshots)
 
 # License
 
