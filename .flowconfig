@@ -21,6 +21,7 @@
 ./app/components/Layout/Open.js.flow
 ./app/components/Layout/Page.js.flow
 ./app/components/Layout/Router.js.flow
+./app/components/ReactNative/Info.js.flow
 ./app/components/Terminal/Console.js.flow
 
 [options]
