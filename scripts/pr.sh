@@ -6,4 +6,4 @@ getBranchName() {
   echo $branch_name
 }
 
-hub pull-request -b $1 -m $(getBranchName)
+hub pull-request -b $1 -m $(getBranchName) | open
