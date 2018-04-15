@@ -16,3 +16,22 @@ declare type $Create = {|
   base: string,
   expo: boolean,
 |};
+
+declare type $CliOptionsType =
+  | 'boolean'
+  | 'file'
+  | 'number'
+  | 'string'
+  ;
+
+declare type $CliOptions = {|
+  +type: $CliOptionsType,
+  +label?: string,
+  +default: any,
+|};
+
+declare type $AnyPrimitive =
+  | string
+  | boolean
+  | number
+  ;

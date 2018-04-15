@@ -1,5 +1,61 @@
 {
   "now": {
     "url": "https://reactnative-zrkchnlzzk.now.sh"
+  },
+  "android": {
+    "runOptions": {
+      "install-debug": {
+        "type": "boolean",
+        "default": false
+      },
+      "root": {
+        "type": "string",
+        "label": "Override the root directory for the android build (which contains the android directory)",
+        "default": ""
+      },
+      "variant": {
+        "type": "string",
+        "default": ""
+      },
+      "appFolder": {
+        "type": "string",
+        "label": "Specify a different application folder name for the android source.",
+        "default": "app"
+      },
+      "appId": {
+        "type": "string",
+        "label": "Specify an applicationId to launch after build.",
+        "default": ""
+      },
+      "appIdSuffix": {
+        "type": "string",
+        "label": "Specify an applicationIdSuffix to launch after build.",
+        "default": ""
+      },
+      "main-activity": {
+        "type": "string",
+        "label": "Name of the activity to start",
+        "default": "MainActivity"
+      },
+      "deviceId": {
+        "type": "string",
+        "label": "builds your app and starts it on a specific device/simulator with the given device id (listed by running \"adb devices\" on the command line).",
+        "default": ""
+      },
+      "no-packager": {
+        "type": "boolean",
+        "label": "Do not launch packager while building",
+        "default": false
+      },
+      "port": {
+        "type": "number",
+        "default": 8081
+      },
+      "config": {
+        "type": "file",
+        "label": "Path to the CLI configuration file",
+        "default": ""
+      }
+    }
   }
 }

@@ -14,10 +14,14 @@
 
 [libs]
 ./flow/app.js.flow
+./app/components/Android/Home.js.flow
+./app/components/Android/Run.js.flow
+./app/components/Android/RunOptions.js.flow
 ./app/components/App/App.js.flow
 ./app/components/App/AppBar.js.flow
 ./app/components/App/AppBottomBar.js.flow
 ./app/components/Base/Animated.js.flow
+./app/components/Base/IconWithLabel.js.flow
 ./app/components/FlexBox/Flex.js.flow
 ./app/components/Layout/AppCard.js.flow
 ./app/components/Layout/Header.js.flow

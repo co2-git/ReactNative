@@ -1,5 +1,5 @@
 // @flow
-import {Card, CardHeader, CardActions} from 'material-ui/Card';
+import {Card, CardHeader, CardActions, CardText} from 'material-ui/Card';
 import {green800, redA700} from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
@@ -45,6 +45,10 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       done: true,
       error: new Error('Status closed'),
       code,
+    }, () => {
+      if (typeof this.props.onFail === 'function') {
+        this.props.onFail(code);
+      }
     }));
   };
   componentDidUpdate = () => {
@@ -53,14 +57,21 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       terminal.scrollTop = terminal.scrollHeight;
     }
   };
+  componentWillUnmount = () => {
+    this.ps.removeAllListeners('data');
+    this.ps.emit('kill');
+    this.ps = null;
+  };
   render = () => (
-    <Card>
+    <Card initiallyExpanded>
       <CardHeader
         title={this.props.command}
         subtitle={`Embedded terminal (${
           (this.state.pid && !this.state.done) ? 'Running' : 'Done'}
         )`}
         avatar={<TermIcon />}
+        actAsExpander
+        showExpandableButton
       />
       <CardActions>
         {this.state.error && (
@@ -97,6 +108,8 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
             {this.props.cwd}
           </Chip>
         </Row>
+      </CardActions>
+      <CardText expandable>
         <div style={consoleStyle} id="terminal">
           {map(this.state.output, (output, index) => {
             const lines = stripAnsi(output.message).split('\n');
@@ -107,10 +120,15 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
             );
           })}
         </div>
-      </CardActions>
+      </CardText>
     </Card>
   );
   onKill = () => this.ps.emit('kill');
+  stop = () => {
+    if (!this.state.done) {
+      this.ps.emit('kill');
+    }
+  };
 }
 
 export default Terminal;

@@ -11,6 +11,7 @@ declare type $FlexReactProps = {
 
 declare type $FlexOwnProps = {|
   +between?: boolean,
+  +center?: boolean,
   +column?: boolean,
   +direction?: $FlexDirection,
   +flexDirection?: $FlexDirection,
