@@ -98,7 +98,11 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
     const cmd = 'react-native run-android';
     const options = [];
     for (const option in this.state.options) {
-      options.push(`--${option} "${this.state.options[option]}"`);
+      if (typeof this.state.options[option] === 'boolean') {
+        options.push(`--${option}`);
+      } else {
+        options.push(`--${option} "${this.state.options[option]}"`);
+      }
     }
     return `${cmd} ${options.join(' ')}`;
   };
