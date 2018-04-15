@@ -1,15 +1,16 @@
-import * as types from '../types';
-import store from '../store';
-import stripAnsi from 'strip-ansi';
 import compact from 'lodash/compact';
+import stripAnsi from 'strip-ansi';
 
+import * as types from '../types';
 import exec from '../../lib/exec';
+import store from '../store';
 
+// eslint-disable-next-line import/prefer-default-export
 export const getInfo = async (app) => {
   try {
     let data = '';
     const ps = exec('react-native info', {cwd: app.path});
-    ps.on('error', error => {
+    ps.on('error', (error) => {
       store.dispatch({
         type: types.ERROR,
         payload: {error},
@@ -28,20 +29,17 @@ export const getInfo = async (app) => {
         .replace(/\n/g, ':NL:')
         .replace(/^.+Environment:(.+)Packages:.+$/, '$1')
         .replace(/:NL:/g, '\n');
-      console.log(environmentString);
       const environment = {};
       const lines = compact(environmentString.split(/\n/));
       for (const line of lines) {
         const [key, ...value] = line.trim().split(':');
         environment[key] = value.join(':').trim();
       }
-      console.log({environment});
       const packagesString = stripped
         .replace(/\n/g, ':NL:')
         .replace(/^.+Packages:(.+)$/, '$1')
         .replace(/:NL:/g, '\n')
         .trim();
-      console.log(packagesString);
       const packages = {};
       const lines2 = compact(packagesString.split(/\n/));
       lines2.shift();
@@ -50,7 +48,6 @@ export const getInfo = async (app) => {
         const [wanted, installed] = value.join(':').split(' => ');
         packages[key] = {wanted: wanted.trim(), installed: installed.trim()};
       }
-      console.log({packages});
       store.dispatch({
         type: types.GOT_INFO,
         payload: {app, info: {environment, packages}},

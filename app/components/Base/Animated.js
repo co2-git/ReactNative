@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import omit from 'lodash/omit';
 
@@ -80,7 +81,7 @@ const effects = [
   'slideOutUp',
 ];
 
-const Animated = (props) => {
+const Animated = (props: $AnimatedProps) => {
   const names = ['animated'];
   const remove = [];
   for (const effect of effects) {

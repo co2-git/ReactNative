@@ -8,8 +8,8 @@ export const startMetroRequest = ({port = 8081, app}) => {
   exec(`adb reverse tcp:${port} tcp:${port}`);
   const {path: dir} = app;
   const metro = exec(`node ${cli} start --port ${port}`, {cwd: dir});
-  metro.on('error', error => {
-    console.log(error)
+  metro.on('error', (error) => {
+    console.log(error);
   });
   metro.on('failed', status => store.dispatch({type: types.METRO_DOWN, payload: {status}}));
   metro.on('data', data => store.dispatch({type: types.METRO_OUTPUT, payload: {data}}));
@@ -18,16 +18,16 @@ export const startMetroRequest = ({port = 8081, app}) => {
 
 export const changePort = (port) => {
   store.dispatch({type: types.CHANGE_METRO_PORT, payload: {port}});
-}
+};
 
 export const stopMetroRequest = () => {
   const {metroStatus} = store.getState();
   if (metroStatus.state === 'started' && metroStatus.pid) {
-    store.dispatch({type: types.METRO_OUTPUT, payload: {data: {message: '!! RECEIVED KILL SIGNAL !!'}}})
+    store.dispatch({type: types.METRO_OUTPUT, payload: {data: {message: '!! RECEIVED KILL SIGNAL !!'}}});
     exec(`kill -9 ${metroStatus.pid}`)
       .on('done', () => store.dispatch({type: types.METRO_DOWN, payload: {status: 'KILLED'}}));
   }
-}
+};
 
 export const start = async (app) => {
   try {

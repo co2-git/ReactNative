@@ -1,12 +1,14 @@
+// @flow
 import {spawn} from 'child_process';
 import Emitter from 'events';
 
-const $spawn = (cmd, options = {}) => {
+const $spawn = (cmd: string, options: $ExecOptions = {}) => {
   const emitter = new Emitter();
+  let ps;
   setTimeout(() => {
     try {
       const [entry, ...bits] = cmd.trim().split(/\s+/);
-      const ps = spawn(entry, bits, options);
+      ps = spawn(entry, bits, options);
       let done = false;
       emitter.emit('pid', ps.pid);
       ps
@@ -42,7 +44,9 @@ const $spawn = (cmd, options = {}) => {
       emitter.on('write', message => ps.stdin.write(message));
       emitter.on('kill', () => $spawn(`kill -9 ${ps.pid}`));
     } catch (error) {
-      console.log(error.stack);
+      if (emitter) {
+        emitter.emit('error', error);
+      }
     }
   });
   return emitter;
