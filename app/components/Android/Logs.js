@@ -2,22 +2,20 @@
 import {Card, CardHeader, CardText, CardActions} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import React, {PureComponent} from 'react';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import Subheader from 'material-ui/Subheader';
 
 import {gutter} from '../../styles/vars/metrics';
-import * as colors from '../../styles/vars/colors';
-import LogLevelToggle from './LogLevelToggle';
 import Row from '../FlexBox/Row';
 import Terminal from '../Terminal/Console';
 
 class AndroidLogs extends PureComponent<$AndroidLogsProps, $AndroidLogsState> {
   terminal: Terminal;
   state = {
-    errors: true,
-    fatal: true,
-    info: false,
+    level: 'all',
     running: false,
     showTerminal: false,
-    warnings: true,
   };
   render = () => (
     <Card>
@@ -26,73 +24,46 @@ class AndroidLogs extends PureComponent<$AndroidLogsProps, $AndroidLogsState> {
         subtitle="Android logs"
       />
       <CardActions>
-        <RaisedButton
-          primary={!this.state.running}
-          secondary={this.state.running}
-          label={this.state.running ? 'Stop' : 'Start'}
-          onClick={this.onToggleStart}
-        />
+        <Row alignY="center">
+          <RaisedButton
+            primary={!this.state.running}
+            secondary={this.state.running}
+            label={this.state.running ? 'Stop' : 'Start'}
+            onClick={this.onToggleStart}
+          />
+          {this.state.showTerminal && (
+            <SelectField
+              floatingLabelText="Log level"
+              value={this.state.level}
+              onChange={(
+                event: SyntheticUIEvent<HTMLSelectElement>,
+                index: number,
+                value: $LogLevel,
+              ) => this.changeLogLevel(value)}
+              style={{marginLeft: gutter}}
+            >
+              <Subheader>Log level</Subheader>
+              <MenuItem value="all" primaryText="All" />
+              <MenuItem value="info" primaryText="Info" />
+              <MenuItem value="warn" primaryText="Warnings" />
+              <MenuItem value="error" primaryText="Errors" />
+              <MenuItem value="fatal" primaryText="Fatal errors" />
+            </SelectField>
+          )}
+        </Row>
       </CardActions>
       <CardText>
         {this.state.showTerminal && (
-          <div>
-            <Row between style={{marginBottom: gutter}}>
-              <LogLevelToggle
-                onToggle={(
-                  event: SyntheticUIEvent<HTMLInputElement>,
-                  checked: boolean,
-                ) => {
-                  this.changeLogLevel({info: checked});
-                }}
-                label="Info"
-                value={this.state.info}
-                color={colors.infoColor}
-              />
-              <LogLevelToggle
-                onToggle={(
-                  event: SyntheticUIEvent<HTMLInputElement>,
-                  checked: boolean,
-                ) => {
-                  this.changeLogLevel({warnings: checked});
-                }}
-                label="Warnings"
-                value={this.state.warnings}
-                color={colors.warningColor}
-              />
-              <LogLevelToggle
-                onToggle={(
-                  event: SyntheticUIEvent<HTMLInputElement>,
-                  checked: boolean,
-                ) => {
-                  this.changeLogLevel({errors: checked});
-                }}
-                label="Errors"
-                value={this.state.errors}
-                color={colors.errorColor}
-              />
-              <LogLevelToggle
-                onToggle={(
-                  event: SyntheticUIEvent<HTMLInputElement>,
-                  checked: boolean,
-                ) => {
-                  this.changeLogLevel({fatal: checked});
-                }}
-                label="Fatal errors"
-                value={this.state.fatal}
-                color={colors.dangerColor}
-              />
-            </Row>
-            <Terminal
-              command={this.makeCommand()}
-              ref={(terminal) => {
-                if (!this.terminal && terminal) {
-                  this.terminal = terminal;
-                }
-              }}
-              onDone={() => this.setState({running: false})}
-              onFail={() => this.setState({running: false})}
-            />
-          </div>
+          <Terminal
+            command={this.makeCommand()}
+            ref={(terminal) => {
+              if (!this.terminal && terminal) {
+                this.terminal = terminal;
+              }
+            }}
+            onDone={() => this.setState({running: false})}
+            onFail={() => this.setState({running: false})}
+          />
         )}
       </CardText>
     </Card>
@@ -112,10 +83,10 @@ class AndroidLogs extends PureComponent<$AndroidLogsProps, $AndroidLogsState> {
       this.setState({showTerminal: true, running: true});
     }
   };
-  changeLogLevel = (level: $LevelChanger) => {
+  changeLogLevel = (level: $LogLevel) => {
     this.terminal.stop();
     setTimeout(() => {
-      this.setState({showTerminal: false, ...level}, () => {
+      this.setState({showTerminal: false, level}, () => {
         setTimeout(() => {
           this.setState({showTerminal: true, running: true});
         }, 500);
@@ -124,17 +95,23 @@ class AndroidLogs extends PureComponent<$AndroidLogsProps, $AndroidLogsState> {
   };
   makeCommand = (): string => {
     let command = 'adb logcat --dividers *:';
-    if (this.state.info) {
-      command += 'I';
-    }
-    if (this.state.warnings) {
-      command += 'W';
-    }
-    if (this.state.errors) {
-      command += 'E';
-    }
-    if (this.state.fatal) {
-      command += 'F';
+    switch (this.state.level) {
+      case 'all':
+      default:
+        command += '*';
+        break;
+      case 'info':
+        command += 'I';
+        break;
+      case 'warn':
+        command += 'W';
+        break;
+      case 'error':
+        command += 'E';
+        break;
+      case 'fatal':
+        command += 'F';
+        break;
     }
     return command;
   };
