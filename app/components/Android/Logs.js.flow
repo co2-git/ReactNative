@@ -8,12 +8,9 @@ declare type $AndroidLogsProps =
   & $AndroidLogsOwnProps;
 
 declare type $AndroidLogsState = {|
-  errors: boolean,
-  fatal: boolean,
-  info: boolean,
+  level: $LogLevel,
   running: boolean,
   showTerminal: boolean,
-  warnings: boolean,
 |};
 
 declare type $LevelChanger = {

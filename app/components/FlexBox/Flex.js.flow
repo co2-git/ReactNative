@@ -4,12 +4,18 @@ type $FlexDirection =
   & 'column'
   & 'row';
 
+type $FlexAlign =
+  | 'center'
+  ;
+
 declare type $FlexReactProps = {
   children: any,
   style?: Object,
 };
 
 declare type $FlexOwnProps = {|
+  +alignY?: $FlexAlign,
+  +around?: boolean,
   +between?: boolean,
   +center?: boolean,
   +column?: boolean,

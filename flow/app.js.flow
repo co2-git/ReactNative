@@ -27,11 +27,19 @@ declare type $CliOptionsType =
 declare type $CliOptions = {|
   +type: $CliOptionsType,
   +label?: string,
-  +default: any,
+  +default: $AnyPrimitive,
 |};
 
 declare type $AnyPrimitive =
   | string
   | boolean
   | number
+  ;
+
+declare type $LogLevel =
+  | 'all'
+  | 'info'
+  | 'warn'
+  | 'error'
+  | 'fatal'
   ;
