@@ -20,7 +20,7 @@ const persistor = persistStore(store);
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={<Loading />} persistor={persistor}>
-      <Layout />
+      <Layout persistor={persistor} />
     </PersistGate>
   </Provider>
 );

@@ -22,7 +22,18 @@ const APK = ({data, loading, title}) => (
     <div>
       {!loading && !data && (
         <div>
-          No apk found
+          <div>
+            <RaisedButton
+              label="Look again"
+            />
+          </div>
+          <Subheader>or</Subheader>
+          <div>
+            <RaisedButton
+              label="Generate APK"
+              secondary
+            />
+          </div>
         </div>
       )}
     </div>
@@ -42,6 +53,12 @@ const APK = ({data, loading, title}) => (
             />
           </span>
           <Subheader>{roundUp(data.size)} MB</Subheader>
+          <div>
+            <RaisedButton
+              label="Generate new APK"
+              secondary
+            />
+          </div>
         </div>
       )}
     </div>
