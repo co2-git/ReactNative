@@ -27,14 +27,12 @@ declare type $CliOptionsType =
 declare type $CliOptions = {|
   +type: $CliOptionsType,
   +label?: string,
-  +default: $AnyPrimitive,
+  +default: $JSON,
 |};
 
-declare type $AnyPrimitive =
-  | string
-  | boolean
-  | number
-  ;
+declare type $JSON = | string | number | boolean | null | $JSONObject | $JSONArray;
+declare type $JSONObject = {[key: string]: $JSON};
+declare type $JSONArray = $JSON[];
 
 declare type $LogLevel =
   | 'all'
@@ -43,3 +41,7 @@ declare type $LogLevel =
   | 'error'
   | 'fatal'
   ;
+
+declare type $ReduxActionPayload = {
+  [attr: string]: $JSON,
+};

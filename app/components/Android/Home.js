@@ -1,22 +1,29 @@
 // @flow
+import findIndex from 'lodash/findIndex';
 import LogIcon from 'material-ui/svg-icons/content/content-paste';
 import PackageIcon from 'material-ui/svg-icons/content/archive';
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
 import React, {PureComponent} from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
-import {gutter} from '../../styles/vars/metrics';
 import AndroidLogs from './Logs';
+import APKs from './APKs';
+import config from '../../../config.json';
 import IconWithLabel from '../Base/IconWithLabel';
 import Row from '../FlexBox/Row';
 import RunAndroid from './Run';
+import Route from '../Layout/Route';
 
-class AndroidHome extends PureComponent<$AndroidHomeProps, $AndroidHomeState> {
-  state = {
-    index: 0,
-  };
+const Loading = () => (
+  <div>
+    Loading...
+  </div>
+);
+
+class AndroidHome extends PureComponent {
+  state = {index: 0};
   render = () => (
-    <div style={{margin: gutter}}>
+    <div>
       <Row between>
         <IconWithLabel
           icon={<PlayIcon color="#777" />}
@@ -39,10 +46,21 @@ class AndroidHome extends PureComponent<$AndroidHomeProps, $AndroidHomeState> {
       >
         <RunAndroid app={this.props.app} />
         <AndroidLogs app={this.props.app} />
+        <APKs app={this.props.app} />
       </SwipeableViews>
     </div>
   );
   selectIndex = (index: number) => this.setState({index});
 }
 
-export default AndroidHome;
+export default Route(
+  AndroidHome,
+  {
+    index: findIndex(config.app.appMenu, {name: 'Android'}),
+    loading: Loading,
+    selector: (state: $State, props: $AndroidHomeOwnProps): $AndroidHomeConnectProps => ({
+      index: state.appRouterIndex[props.app.path] || 0,
+      status: state.appRouterStatus[props.app.path],
+    }),
+  },
+);

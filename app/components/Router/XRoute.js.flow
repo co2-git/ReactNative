@@ -1,0 +1,19 @@
+// @flow
+
+declare type $XRouteProps = {|
+  +component: () => React$Element<*>,
+  +componentProps?: {
+    [prop: string]: $JSON,
+  },
+  +routeIndex: number,
+|};
+
+declare type $XRouteStatus =
+  | 'off'
+  | 'entering'
+  | 'transitionend'
+  ;
+
+declare type $XRouteState = {|
+  +status: $XRouteStatus,
+|};
