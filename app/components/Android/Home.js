@@ -12,7 +12,8 @@ import config from '../../../config.json';
 import IconWithLabel from '../Base/IconWithLabel';
 import Row from '../FlexBox/Row';
 import RunAndroid from './Run';
-import Route from '../Layout/Route';
+import XRouter from '../Router/XRouter';
+import XRoute from '../Router/XRoute';
 
 const Loading = () => (
   <div>
@@ -41,26 +42,26 @@ class AndroidHome extends PureComponent {
           onClick={() => this.selectIndex(2)}
         />
       </Row>
-      <SwipeableViews
-        index={this.state.index}
-      >
-        <RunAndroid app={this.props.app} />
-        <AndroidLogs app={this.props.app} />
-        <APKs app={this.props.app} />
-      </SwipeableViews>
+      <XRouter index={this.state.index}>
+        <XRoute
+          routeIndex={0}
+          component={RunAndroid}
+          componentProps={{app: this.props.app}}
+        />
+        <XRoute
+          routeIndex={1}
+          component={AndroidLogs}
+          componentProps={{app: this.props.app}}
+        />
+        <XRoute
+          routeIndex={2}
+          component={APKs}
+          componentProps={{app: this.props.app}}
+        />
+      </XRouter>
     </div>
   );
   selectIndex = (index: number) => this.setState({index});
 }
 
-export default Route(
-  AndroidHome,
-  {
-    index: findIndex(config.app.appMenu, {name: 'Android'}),
-    loading: Loading,
-    selector: (state: $State, props: $AndroidHomeOwnProps): $AndroidHomeConnectProps => ({
-      index: state.appRouterIndex[props.app.path] || 0,
-      status: state.appRouterStatus[props.app.path],
-    }),
-  },
-);
+export default AndroidHome;

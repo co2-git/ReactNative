@@ -1,11 +1,12 @@
 // @flow
 
 declare type $XRouteProps = {|
-  +component: () => React$Element<*>,
+  +component: Function,
   +componentProps?: {
     [prop: string]: $JSON,
   },
   +routeIndex: number,
+  +style?: Object,
 |};
 
 declare type $XRouteStatus =

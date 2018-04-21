@@ -10,7 +10,8 @@ import AppBar from './AppBar';
 import AppBottomBar from './AppBottomBar';
 import Info from '../ReactNative/Info';
 import Page from '../Layout/Page';
-import Route from '../Layout/Route';
+import XRouter from '../Router/XRouter';
+import XRoute from '../Router/XRoute';
 
 class App extends PureComponent<$AppProps> {
   componentDidMount = () => {
@@ -22,37 +23,58 @@ class App extends PureComponent<$AppProps> {
         <AppBar app={this.props.app} />
       </div>
       <div style={appMainStyle}>
-        <SwipeableViews
-          index={this.props.index}
-          onSwitching={() => switchingAppRoute(this.props.app, this.props.index)}
-          onTransitionEnd={() => switchedAppRoute(this.props.app, this.props.index)}
-        >
-          <div style={appTabStyle}>
-            <Info app={this.props.app} />
-          </div>
-          <div style={appTabStyle}>
-            Start
-          </div>
-          <div style={appTabStyle}>
-            <AndroidHome app={this.props.app} />
-          </div>
-          <div style={appTabStyle}>
-            iOS
-          </div>
-          <div style={appTabStyle}>
-            Upgrade
-          </div>
-          <div style={appTabStyle}>
-            Native
-          </div>
-          <div style={appTabStyle}>
-            Eject
-          </div>
-        </SwipeableViews>
+        <XRouter index={this.props.index}>
+          <XRoute
+            routeIndex={0}
+            component={Info}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+          <XRoute
+            routeIndex={1}
+            component={() => <div>Start</div>}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+          <XRoute
+            routeIndex={2}
+            component={AndroidHome}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+          <XRoute
+            routeIndex={3}
+            component={() => <div>iOS</div>}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+          <XRoute
+            routeIndex={4}
+            component={() => <div>Upgrade</div>}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+          <XRoute
+            routeIndex={5}
+            component={() => <div>Native</div>}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+          <XRoute
+            routeIndex={6}
+            component={() => <div>Eject</div>}
+            componentProps={{app: this.props.app}}
+            style={appTabStyle}
+          />
+        </XRouter>
       </div>
       <AppBottomBar app={this.props.app} />
     </Page>
   );
 }
 
-export default App;
+const selector = (state: $State, props: $AppBottomOwnProps): $AppBottomBarConnectProps => ({
+  index: state.appRouterIndex[props.app.path] || 0,
+});
+
+export default connect(selector)(App);

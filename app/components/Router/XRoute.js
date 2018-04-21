@@ -1,5 +1,6 @@
 // @flow
 import React, {PureComponent} from 'react';
+import CircularProgress from 'material-ui/CircularProgress';
 
 export default class XRoute extends PureComponent<$XRouteProps, $XRouteState> {
   static getDerivedStateFromProps(nextProps: $XRouteProps, prevState: $XRouteState): ?$XRouteState {
@@ -21,12 +22,14 @@ export default class XRoute extends PureComponent<$XRouteProps, $XRouteState> {
     status: this.props.index === this.props.routeIndex ? 'transitionned' : 'off',
   };
   render = () => (
-    <div>
+    <div style={this.props.style}>
       {this.state.status === 'off' && (
         <div>OFF</div>
       )}
       {this.state.status === 'entering' && (
-        <div>ENTER</div>
+        <div>
+          <CircularProgress size={80} />
+        </div>
       )}
       {this.state.status === 'transitionned' && (
         <div>
