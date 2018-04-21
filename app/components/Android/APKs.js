@@ -15,8 +15,7 @@ class APKs extends PureComponent {
     getRelease: false,
   };
   componentDidMount = () => {
-    console.log('APKS')
-    // this.getApks('debug');
+    this.getApks('debug', 'release');
   };
   render = () => (
     <div>
@@ -25,12 +24,12 @@ class APKs extends PureComponent {
           <Row between>
             <APK
               data={this.state.debug}
-              loading={this.getDebug}
+              loading={this.state.getDebug}
               title="Debug"
             />
             <APK
               data={this.state.release}
-              loading={this.getRelease}
+              loading={this.state.getRelease}
               title="Release"
             />
           </Row>
@@ -40,11 +39,26 @@ class APKs extends PureComponent {
   );
   getApks = async (...variants) => new Promise(async (resolve, reject) => {
     try {
+      const partial = {};
+      variants.forEach((variant) => {
+        if (variant === 'debug') {
+          partial.getDebug = true;
+          partial.debug = null;
+        }
+      });
+      this.setState(partial);
       const results = await Promise.all(map(
         variants,
         variant => getAPK(this.props.app, variant),
       ));
-      console.log({results});
+      const partial2 = {};
+      variants.forEach((variant, index) => {
+        if (variant === 'debug') {
+          partial2.getDebug = false;
+          partial2.debug = results[index];
+        }
+      });
+      this.setState(partial2);
     } catch (error) {
       console.log(error.stack);
       reject(error);

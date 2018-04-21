@@ -5,6 +5,7 @@ import PackageIcon from 'material-ui/svg-icons/content/archive';
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
 import React, {PureComponent} from 'react';
 import SwipeableViews from 'react-swipeable-views';
+import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 
 import AndroidLogs from './Logs';
 import APKs from './APKs';
@@ -24,24 +25,24 @@ const Loading = () => (
 class AndroidHome extends PureComponent {
   state = {index: 0};
   render = () => (
-    <div>
-      <Row between>
-        <IconWithLabel
-          icon={<PlayIcon color="#777" />}
+    <div style={{margin: 12}}>
+      <BottomNavigation selectedIndex={this.state.index} style={{marginBottom: 12}}>
+        <BottomNavigationItem
           label="Run"
           onClick={() => this.selectIndex(0)}
+          icon={<PlayIcon />}
         />
-        <IconWithLabel
-          icon={<LogIcon color="#777" />}
+        <BottomNavigationItem
           label="Logs"
           onClick={() => this.selectIndex(1)}
+          icon={<LogIcon />}
         />
-        <IconWithLabel
-          icon={<PackageIcon color="#777" />}
+        <BottomNavigationItem
           label="APKs"
           onClick={() => this.selectIndex(2)}
+          icon={<PackageIcon />}
         />
-      </Row>
+      </BottomNavigation>
       <XRouter index={this.state.index}>
         <XRoute
           routeIndex={0}

@@ -5,31 +5,34 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 import Subheader from 'material-ui/Subheader';
 
+import {dragAPK} from '../../redux/actions/androidActions';
+import {roundUp} from '../../helpers/mathHelpers';
+
 const APK = ({data, loading, title}) => (
   <div>
     <h4>{title}</h4>
     <div>
       {loading && (
-        <CircularProgress />
+        <div>
+          <CircularProgress />
+          <div>Looking for APK</div>
+        </div>
       )}
     </div>
     <div>
-      {loading && !data && (
+      {!loading && !data && (
         <div>
           No apk found
         </div>
       )}
     </div>
     <div>
-      {loading && data && (
+      {!loading && data && (
         <div>
           <span
             draggable
-            onDragStart={(event) => {
-              event.dataTransfer.setData(
-                'DownloadURL',
-                `text/html:cool.apk:data:;base64,`,
-              );
+            onDragStart={() => {
+              dragAPK(data.path);
             }}
           >
             <RaisedButton
@@ -38,7 +41,7 @@ const APK = ({data, loading, title}) => (
               icon={<ActionAndroid />}
             />
           </span>
-          <Subheader>47 Mb</Subheader>
+          <Subheader>{roundUp(data.size)} MB</Subheader>
         </div>
       )}
     </div>

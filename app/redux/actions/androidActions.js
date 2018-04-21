@@ -1,31 +1,36 @@
 // @flow
-import fs from 'fs';
 import path from 'path';
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import {remote} from 'electron';
 
 import * as types from '../types';
-import {dispatch, dispatchError} from '../storeHelpers';
+import {dispatchError} from '../storeHelpers';
 import config from '../../../config.json';
+import {stat} from '../../helpers/fsHelpers';
+import {convertBytesToMegaBytes} from '../../helpers/mathHelpers';
 
-export const getAPK = async (app, variant = 'debug') => {
+export const getAPK = async (app: $App, variant: string = 'debug') => {
   try {
     const apkPath = path.join(
       app.path,
       config.android.paths.apk,
       `app-${variant}.apk`,
     );
-    console.log({apkPath});
-    let source = '';
-    fs.createReadStream(apkPath)
-      .on('error', error => dispatchError(error, types.FAILED_GETTING_APK, {app, variant}))
-      .on('data', (data) => {
-        source += data;
-      })
-      .on('end', () => {
-        console.log(source);
-      });
+    const stats = await stat(apkPath);
+    return {
+      path: apkPath,
+      size: convertBytesToMegaBytes(stats.size),
+    };
   } catch (error) {
     dispatchError(error, types.FAILED_GETTING_APK, {app, variant});
   }
+};
+
+export const dragAPK = (apkPath: string) => {
+  remote.getCurrentWebContents().startDrag({
+    file: apkPath,
+    icon: path.resolve(__dirname, '../../..', 'assets/icons/apk.png'),
+  });
 };
 
 export const generateAPK = () => {};

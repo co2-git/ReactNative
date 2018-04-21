@@ -27,7 +27,7 @@ export default class XRoute extends PureComponent<$XRouteProps, $XRouteState> {
         <div>OFF</div>
       )}
       {this.state.status === 'entering' && (
-        <div>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
           <CircularProgress size={80} />
         </div>
       )}
