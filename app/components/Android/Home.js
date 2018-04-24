@@ -1,48 +1,63 @@
 // @flow
+import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
+import {connect} from 'react-redux';
 import LogIcon from 'material-ui/svg-icons/content/content-paste';
 import PackageIcon from 'material-ui/svg-icons/content/archive';
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
-import React, {PureComponent} from 'react';
-import SwipeableViews from 'react-swipeable-views';
+import React from 'react';
 
-import {gutter} from '../../styles/vars/metrics';
+import {switchAndroidRoute} from '../../redux/actions/routerActions';
 import AndroidLogs from './Logs';
-import IconWithLabel from '../Base/IconWithLabel';
-import Row from '../FlexBox/Row';
+import APKs from './APKs';
 import RunAndroid from './Run';
+import XRoute from '../Router/XRoute';
+import XRouter from '../Router/XRouter';
 
-class AndroidHome extends PureComponent<$AndroidHomeProps, $AndroidHomeState> {
-  state = {
-    index: 0,
-  };
-  render = () => (
-    <div style={{margin: gutter}}>
-      <Row between>
-        <IconWithLabel
-          icon={<PlayIcon color="#777" />}
+const AndroidHome = ({app, index}: $AndroidHomeProps) => (
+  <div style={{margin: 12}}>
+    <div>
+      <BottomNavigation selectedIndex={index} style={{marginBottom: 12}}>
+        <BottomNavigationItem
           label="Run"
-          onClick={() => this.selectIndex(0)}
+          onClick={() => switchAndroidRoute(app, 0)}
+          icon={<PlayIcon />}
         />
-        <IconWithLabel
-          icon={<LogIcon color="#777" />}
+        <BottomNavigationItem
           label="Logs"
-          onClick={() => this.selectIndex(1)}
+          onClick={() => switchAndroidRoute(app, 1)}
+          icon={<LogIcon />}
         />
-        <IconWithLabel
-          icon={<PackageIcon color="#777" />}
+        <BottomNavigationItem
           label="APKs"
-          onClick={() => this.selectIndex(2)}
+          onClick={() => switchAndroidRoute(app, 2)}
+          icon={<PackageIcon />}
         />
-      </Row>
-      <SwipeableViews
-        index={this.state.index}
-      >
-        <RunAndroid app={this.props.app} />
-        <AndroidLogs app={this.props.app} />
-      </SwipeableViews>
+      </BottomNavigation>
     </div>
-  );
-  selectIndex = (index: number) => this.setState({index});
-}
+    <div>
+      <XRouter index={index}>
+        <XRoute
+          routeIndex={0}
+          component={RunAndroid}
+          componentProps={{app}}
+        />
+        <XRoute
+          routeIndex={1}
+          component={AndroidLogs}
+          componentProps={{app}}
+        />
+        <XRoute
+          routeIndex={2}
+          component={APKs}
+          componentProps={{app}}
+        />
+      </XRouter>
+    </div>
+  </div>
+);
 
-export default AndroidHome;
+const selector = (state, props) => ({
+  index: state.androidRouterIndex[props.app.path] || 0,
+});
+
+export default connect(selector)(AndroidHome);

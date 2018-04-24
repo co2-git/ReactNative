@@ -1,0 +1,9 @@
+// @flow
+
+declare type $DrawerMenuOwnProps = {|
+  +persistor: $ReduxPersistor,
+|};
+
+declare type $DrawerMenuProps =
+  & $DrawerMenuOwnProps
+  ;

@@ -22,6 +22,7 @@ declare type $Output = {|
 
 declare type $TerminalState = {|
   code: ?number,
+  command: string,
   done: boolean,
   error: ?Error,
   output: $Output[],

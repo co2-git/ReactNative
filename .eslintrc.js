@@ -9,6 +9,7 @@ module.exports = {
     "object-curly-spacing": ["error", "never"],
     "no-restricted-syntax": 0,
     "guard-for-in": 0,
+    "function-paren-newline": 0,
 
     // Flow
     "flowtype/boolean-style": [
@@ -70,6 +71,7 @@ module.exports = {
   "extends": ["airbnb-base", "plugin:react/recommended"],
   "globals": {
     "document": true,
+    "window": true,
   },
   "settings": {
     "flowtype": {

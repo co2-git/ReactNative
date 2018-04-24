@@ -1,0 +1,23 @@
+// @flow
+
+declare type $XRouteProps = {|
+  +component: Function,
+  +componentProps?: {
+    [prop: string]: $JSON,
+  },
+  +routeIndex: number,
+  +style?: Object,
+  +index?: number,
+  +switching?: ?number,
+  +transitionned?: ?number,
+|};
+
+declare type $XRouteStatus =
+  | 'off'
+  | 'entering'
+  | 'transitionned'
+  ;
+
+declare type $XRouteState = {|
+  +status: $XRouteStatus,
+|};

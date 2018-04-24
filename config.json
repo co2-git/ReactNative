@@ -1,4 +1,15 @@
 {
+  "app": {
+    "appMenu": [
+      {"name": "Info"},
+      {"name": "Start"},
+      {"name": "Android"},
+      {"name": "iOS"},
+      {"name": "Upgrade"},
+      {"name": "Native"},
+      {"name": "Eject"}
+    ]
+  },
   "now": {
     "url": "https://reactnative-zrkchnlzzk.now.sh"
   },
@@ -56,6 +67,9 @@
         "label": "Path to the CLI configuration file",
         "default": ""
       }
+    },
+    "paths": {
+      "apk": "android/app/build/outputs/apk"
     }
   }
 }
