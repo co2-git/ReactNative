@@ -8,7 +8,7 @@ import Subheader from 'material-ui/Subheader';
 import {dragAPK} from '../../redux/actions/androidActions';
 import {roundUp} from '../../helpers/mathHelpers';
 
-const APK = ({data, loading, title}) => (
+const APK = ({data, loading, lookAgain, title}) => (
   <div>
     <h4>{title}</h4>
     <div>
@@ -25,6 +25,7 @@ const APK = ({data, loading, title}) => (
           <div>
             <RaisedButton
               label="Look again"
+              onClick={lookAgain}
             />
           </div>
           <Subheader>or</Subheader>

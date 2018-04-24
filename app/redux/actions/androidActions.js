@@ -2,12 +2,14 @@
 import path from 'path';
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import {remote} from 'electron';
+import capitalize from 'lodash/capitalize';
 
 import * as types from '../types';
 import {dispatchError} from '../storeHelpers';
 import config from '../../../config.json';
 import {stat} from '../../helpers/fsHelpers';
 import {convertBytesToMegaBytes} from '../../helpers/mathHelpers';
+import exec from '../../lib/exec';
 
 export const getAPK = async (app: $App, variant: string = 'debug') => {
   try {
@@ -33,4 +35,13 @@ export const dragAPK = (apkPath: string) => {
   });
 };
 
-export const generateAPK = () => {};
+export const generateAPK = async (app: $App, variant: string = 'debug') => {
+  try {
+    const ps = exec(`./gradlew assemble${capitalize(variant)}`, {
+      cwd: path.join(app.path, 'android'),
+    });
+    ps.on('error', error => dispatchError(error, types.FAILED_GENERATING_APK, {app, variant}));
+  } catch (error) {
+    dispatchError(error, types.FAILED_GENERATING_APK, {app, variant});
+  }
+};

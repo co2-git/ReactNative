@@ -53,6 +53,13 @@ const DrawerMenu = ({persistor}) => (
       Reset
     </MenuItem>
     <Divider />
+    <MenuItem
+      leftIcon={<HelpIcon />}
+      onClick={() => open('https://facebook.github.io/react-native/docs/getting-started.html')}
+    >
+      React Native Help
+    </MenuItem>
+    <Divider />
   </div>
 );
 

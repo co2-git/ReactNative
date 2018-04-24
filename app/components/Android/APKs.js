@@ -26,11 +26,13 @@ class APKs extends PureComponent {
               data={this.state.debug}
               loading={this.state.getDebug}
               title="Debug"
+              lookAgain={() => this.getApks('debug')}
             />
             <APK
               data={this.state.release}
               loading={this.state.getRelease}
               title="Release"
+              lookAgain={() => this.getApks('release')}
             />
           </Row>
         </CardText>
