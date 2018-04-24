@@ -11,7 +11,3 @@ declare type $AndroidHomeConnectProps = {|
 declare type $AndroidHomeProps =
   & $AndroidHomeOwnProps
   & $AndroidHomeConnectProps;
-
-declare type $AndroidHomeState = {|
-  index: number,
-|};

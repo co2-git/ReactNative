@@ -10,6 +10,7 @@ import OpenFolderIcon from 'material-ui/svg-icons/file/folder-open';
 import React, {PureComponent} from 'react';
 import stripAnsi from 'strip-ansi';
 import TermIcon from 'material-ui/svg-icons/action/code';
+import TextField from 'material-ui/TextField';
 
 import {consoleStyle} from '../../styles/main';
 import exec from '../../lib/exec';
@@ -19,13 +20,109 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
   ps: $Emitter;
   state: $TerminalState = {
     code: null,
+    command: '',
     done: false,
     error: null,
     output: [],
     pid: null,
   };
   componentDidMount = () => {
-    const {command, cwd, inputHandlers = []} = this.props;
+    const {command, ...options} = this.props;
+    this.run(command, options);
+  };
+  componentDidUpdate = () => {
+    const terminal = document.getElementById('terminal');
+    if (terminal) {
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+  };
+  componentWillUnmount = () => {
+    this.ps.removeAllListeners('data');
+    this.ps.removeAllListeners('error');
+    this.ps.removeAllListeners('done');
+    this.ps.removeAllListeners('failed');
+    this.ps.emit('kill');
+    this.ps = null;
+  };
+  render = () => (
+    <Card initiallyExpanded>
+      <CardHeader
+        title={this.props.command}
+        subtitle={this.makeSubtitle()}
+        avatar={<TermIcon />}
+        actAsExpander
+        showExpandableButton
+      />
+      <CardActions style={{marginLeft: 12, marginRight: 12}}>
+        {this.state.error && (
+          <div>
+            {this.state.error.message}
+          </div>
+        )}
+        <Row between>
+          <Chip>
+            <Avatar>PID</Avatar>
+            {this.state.pid}
+          </Chip>
+          {typeof this.state.code === 'number' && (
+            <Chip
+              backgroundColor={this.state.code === 0 ? green800 : redA700}
+            >
+              <Avatar
+                backgroundColor={this.state.code === 0 ? green800 : redA700}
+                icon={
+                  this.state.code === 0 ? (
+                    <DoneIcon />
+                  ) : (
+                    <ErrorIcon />
+                  )
+                }
+              />
+              {this.state.code > 0 && (
+                <span style={{color: 'white'}}>{this.state.code}</span>
+              )}
+            </Chip>
+          )}
+          <Chip>
+            <Avatar icon={<OpenFolderIcon />} />
+            {this.props.cwd}
+          </Chip>
+        </Row>
+      </CardActions>
+      <CardText expandable>
+        <div style={consoleStyle} id="terminal">
+          {map(this.state.output, (output, index) => {
+            const lines = stripAnsi(output.message).split('\n');
+            return (
+              <div key={index}>
+                {map(lines, (line, lineIndex) => <div key={lineIndex}>{line}</div>)}
+              </div>
+            );
+          })}
+        </div>
+        <TextField
+          hintText="Run command"
+          fullWidth
+          value={this.state.command}
+          onChange={event => this.setState({command: event.target.value})}
+          onKeyDown={({keyCode}) => {
+            if (keyCode === 13) {
+              if (!this.state.done) {
+                this.ps.emit('write', this.state.command);
+                this.setState({command: ''});
+              } else {
+                const {cwd} = this.props;
+                this.run(this.state.command, {cwd});
+                this.setState({command: ''});
+              }
+            }
+          }}
+        />
+      </CardText>
+    </Card>
+  );
+  onKill = () => this.ps.emit('kill');
+  run = (command, {cwd, inputHandlers = []}) => {
     this.ps = exec(command, {cwd});
     this.ps.on('pid', pid => this.setState({pid}));
     this.ps.on('data', data => this.setState({output: [...this.state.output, data]}, () => {
@@ -74,80 +171,6 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       }
     }));
   };
-  componentDidUpdate = () => {
-    const terminal = document.getElementById('terminal');
-    if (terminal) {
-      terminal.scrollTop = terminal.scrollHeight;
-    }
-  };
-  componentWillUnmount = () => {
-    this.ps.removeAllListeners('data');
-    this.ps.removeAllListeners('error');
-    this.ps.removeAllListeners('done');
-    this.ps.removeAllListeners('failed');
-    this.ps.emit('kill');
-    this.ps = null;
-  };
-  render = () => (
-    <Card initiallyExpanded>
-      <CardHeader
-        title={this.props.command}
-        subtitle={this.makeSubtitle()}
-        avatar={<TermIcon />}
-        actAsExpander
-        showExpandableButton
-      />
-      <CardActions>
-        {this.state.error && (
-          <div>
-            {this.state.error.message}
-          </div>
-        )}
-        <Row between>
-          <Chip>
-            <Avatar>PID</Avatar>
-            {this.state.pid}
-          </Chip>
-          {typeof this.state.code === 'number' && (
-            <Chip
-              backgroundColor={this.state.code === 0 ? green800 : redA700}
-            >
-              <Avatar
-                backgroundColor={this.state.code === 0 ? green800 : redA700}
-                icon={
-                  this.state.code === 0 ? (
-                    <DoneIcon />
-                  ) : (
-                    <ErrorIcon />
-                  )
-                }
-              />
-              {this.state.code > 0 && (
-                <span style={{color: 'white'}}>{this.state.code}</span>
-              )}
-            </Chip>
-          )}
-          <Chip>
-            <Avatar icon={<OpenFolderIcon />} />
-            {this.props.cwd}
-          </Chip>
-        </Row>
-      </CardActions>
-      <CardText expandable>
-        <div style={consoleStyle} id="terminal">
-          {map(this.state.output, (output, index) => {
-            const lines = stripAnsi(output.message).split('\n');
-            return (
-              <div key={index}>
-                {map(lines, (line, lineIndex) => <div key={lineIndex}>{line}</div>)}
-              </div>
-            );
-          })}
-        </div>
-      </CardText>
-    </Card>
-  );
-  onKill = () => this.ps.emit('kill');
   makeSubtitle = (): string => {
     let message = 'Embedded terminal (';
     if (this.state.pid && !this.state.done) {

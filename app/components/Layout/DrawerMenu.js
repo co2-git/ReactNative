@@ -12,9 +12,10 @@ import Subheader from 'material-ui/Subheader';
 
 import info from '../../../package.json';
 
-const DrawerMenu = ({persistor}) => (
+const DrawerMenu = ({persistor}: $DrawerMenuProps) => (
   <div>
-    <Subheader inset>
+    <Divider />
+    <Subheader>
       <strong>{info.name}</strong> v<em>{info.version}</em>
     </Subheader>
     <Divider />

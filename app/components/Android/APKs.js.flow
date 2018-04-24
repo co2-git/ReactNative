@@ -1,0 +1,16 @@
+// @flow
+
+declare type $APKsOwnProps = {|
+  +app: $App,
+|};
+
+declare type $APKsProps =
+  & $APKsOwnProps
+  ;
+
+declare type $APKsState = {|
+  debug: ?$APKData,
+  release: ?$APKData,
+  getDebug: boolean,
+  getRelease: boolean,
+|};

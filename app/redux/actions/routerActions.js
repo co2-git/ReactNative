@@ -30,3 +30,8 @@ export const switchedAppRoute = (app, index) => store.dispatch({
   type: types.SWITCHED_APP_ROUTE,
   payload: {app, index},
 });
+
+export const switchAndroidRoute = (app, index) => store.dispatch({
+  type: types.SWITCH_ANDROID_ROUTE,
+  payload: {app, index},
+});

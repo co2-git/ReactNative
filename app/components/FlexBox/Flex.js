@@ -34,7 +34,7 @@ const makeStyle = (props: $FlexProps) => {
     style.alignItems = 'center';
   }
   if (props.alignY && style.flexDirection === 'row') {
-    if (props.alignY === 'center') {
+    if (props.alignY === 'center' || props.alignY === true) {
       style.alignItems = 'center';
     }
   }

@@ -1,0 +1,11 @@
+// @flow
+
+declare type $DrawerMenuOwnProps = {|
+  +persistor: {|
+    +purge: () => Promise<*>,
+  |},
+|};
+
+declare type $DrawerMenuProps =
+  & $DrawerMenuOwnProps
+  ;

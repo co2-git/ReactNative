@@ -1,0 +1,28 @@
+// @flow
+
+declare type $APKVariant =
+  | 'Debug'
+  | 'Release'
+  ;
+
+declare type $APKData = {|
+  +path: string,
+  +size: number,
+|};
+
+declare type $APKOwnProps = {|
+  +data: $APKData,
+  +loading: boolean,
+  +lookAgain: () => void,
+  +subtitle: string,
+  +title: $APKVariant,
+|};
+
+declare type $APKProps =
+  & $APKOwnProps
+  ;
+
+declare type $APKState = {|
+  showTerminal: boolean,
+  showFailMessage: boolean,
+|};

@@ -1,13 +1,11 @@
 // @flow
-import React, {PureComponent} from 'react';
-import {Card, CardText} from 'material-ui/Card';
 import map from 'lodash/map';
+import React, {PureComponent} from 'react';
 
 import {getAPK} from '../../redux/actions/androidActions';
 import APK from './APK';
-import Row from '../FlexBox/Row';
 
-class APKs extends PureComponent {
+class APKs extends PureComponent<$APKsProps, $APKsState> {
   state = {
     debug: null,
     release: null,
@@ -19,24 +17,22 @@ class APKs extends PureComponent {
   };
   render = () => (
     <div>
-      <Card>
-        <CardText>
-          <Row between>
-            <APK
-              data={this.state.debug}
-              loading={this.state.getDebug}
-              title="Debug"
-              lookAgain={() => this.getApks('debug')}
-            />
-            <APK
-              data={this.state.release}
-              loading={this.state.getRelease}
-              title="Release"
-              lookAgain={() => this.getApks('release')}
-            />
-          </Row>
-        </CardText>
-      </Card>
+      <APK
+        title="Debug"
+        subtitle="APK with React Native developer tools"
+        loading={this.state.getDebug}
+        data={this.state.debug}
+        lookAgain={() => this.getApks('debug')}
+        app={this.props.app}
+      />
+      <APK
+        title="Release"
+        subtitle="Play Store ready production APK"
+        loading={this.state.getRelease}
+        data={this.state.release}
+        lookAgain={() => this.getApks('release')}
+        app={this.props.app}
+      />
     </div>
   );
   getApks = async (...variants) => new Promise(async (resolve, reject) => {
@@ -62,7 +58,6 @@ class APKs extends PureComponent {
       });
       this.setState(partial2);
     } catch (error) {
-      console.log(error.stack);
       reject(error);
     }
   });

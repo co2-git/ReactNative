@@ -5,6 +5,7 @@ type $FlexDirection =
   & 'row';
 
 type $FlexAlign =
+  | true
   | 'center'
   ;
 

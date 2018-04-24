@@ -25,6 +25,7 @@ export const getAPK = async (app: $App, variant: string = 'debug') => {
     };
   } catch (error) {
     dispatchError(error, types.FAILED_GETTING_APK, {app, variant});
+    return null;
   }
 };
 
