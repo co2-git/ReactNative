@@ -1,4 +1,6 @@
 #! /bin/bash
+VERSION=$1
+
 getBranchName() {
   branch_name=$(git symbolic-ref -q HEAD)
   branch_name=${branch_name##refs/heads/}
@@ -12,4 +14,4 @@ ISSUE=${ISSUE##bug/}
 
 git commit --allow-empty -am "Fix #$ISSUE"
 git push
-hub pull-request -o -b $1 -m $(getBranchName)
+hub pull-request -o -b $VERSION -m $(getBranchName)
