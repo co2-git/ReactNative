@@ -15,40 +15,44 @@ import XRouter from '../Router/XRouter';
 
 const AndroidHome = ({app, index}: $AndroidHomeProps) => (
   <div style={{margin: 12}}>
-    <BottomNavigation selectedIndex={index} style={{marginBottom: 12}}>
-      <BottomNavigationItem
-        label="Run"
-        onClick={() => switchAndroidRoute(app, 0)}
-        icon={<PlayIcon />}
-      />
-      <BottomNavigationItem
-        label="Logs"
-        onClick={() => switchAndroidRoute(app, 1)}
-        icon={<LogIcon />}
-      />
-      <BottomNavigationItem
-        label="APKs"
-        onClick={() => switchAndroidRoute(app, 2)}
-        icon={<PackageIcon />}
-      />
-    </BottomNavigation>
-    <XRouter index={index}>
-      <XRoute
-        routeIndex={0}
-        component={RunAndroid}
-        componentProps={{app}}
-      />
-      <XRoute
-        routeIndex={1}
-        component={AndroidLogs}
-        componentProps={{app}}
-      />
-      <XRoute
-        routeIndex={2}
-        component={APKs}
-        componentProps={{app}}
-      />
-    </XRouter>
+    <div>
+      <BottomNavigation selectedIndex={index} style={{marginBottom: 12}}>
+        <BottomNavigationItem
+          label="Run"
+          onClick={() => switchAndroidRoute(app, 0)}
+          icon={<PlayIcon />}
+        />
+        <BottomNavigationItem
+          label="Logs"
+          onClick={() => switchAndroidRoute(app, 1)}
+          icon={<LogIcon />}
+        />
+        <BottomNavigationItem
+          label="APKs"
+          onClick={() => switchAndroidRoute(app, 2)}
+          icon={<PackageIcon />}
+        />
+      </BottomNavigation>
+    </div>
+    <div>
+      <XRouter index={index}>
+        <XRoute
+          routeIndex={0}
+          component={RunAndroid}
+          componentProps={{app}}
+        />
+        <XRoute
+          routeIndex={1}
+          component={AndroidLogs}
+          componentProps={{app}}
+        />
+        <XRoute
+          routeIndex={2}
+          component={APKs}
+          componentProps={{app}}
+        />
+      </XRouter>
+    </div>
   </div>
 );
 

@@ -3,6 +3,7 @@ import map from 'lodash/map';
 import React, {PureComponent} from 'react';
 
 import {getAPK} from '../../redux/actions/androidActions';
+import {raiseError} from '../../redux/actions/errorsActions';
 import APK from './APK';
 
 class APKs extends PureComponent<$APKsProps, $APKsState> {
@@ -22,7 +23,9 @@ class APKs extends PureComponent<$APKsProps, $APKsState> {
         subtitle="APK with React Native developer tools"
         loading={this.state.getDebug}
         data={this.state.debug}
-        lookAgain={() => this.getApks('debug')}
+        lookAgain={() => {
+          this.getApks('debug');
+        }}
         app={this.props.app}
       />
       <APK
@@ -30,12 +33,14 @@ class APKs extends PureComponent<$APKsProps, $APKsState> {
         subtitle="Play Store ready production APK"
         loading={this.state.getRelease}
         data={this.state.release}
-        lookAgain={() => this.getApks('release')}
+        lookAgain={() => {
+          this.getApks('release');
+        }}
         app={this.props.app}
       />
     </div>
   );
-  getApks = async (...variants) => new Promise(async (resolve, reject) => {
+  getApks = async (...variants: Array<'debug' | 'release'>) => {
     try {
       const partial = {};
       variants.forEach((variant) => {
@@ -58,9 +63,9 @@ class APKs extends PureComponent<$APKsProps, $APKsState> {
       });
       this.setState(partial2);
     } catch (error) {
-      reject(error);
+      raiseError(error);
     }
-  });
+  }
 }
 
 export default APKs;

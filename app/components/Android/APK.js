@@ -55,7 +55,10 @@ class APK extends PureComponent<$APKProps, $APKState> {
             <span
               draggable
               onDragStart={() => {
-                dragAPK(this.props.data.path);
+                const {data} = this.props;
+                if (data) {
+                  dragAPK(data.path);
+                }
               }}
             >
               <RaisedButton

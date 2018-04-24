@@ -4,7 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 
 export default class XRouter extends PureComponent<$XRouterProps, $XRouterState> {
   static defaultProps = {index: 0};
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps: $XRouterProps, prevState: $XRouterState) {
     if (nextProps.index !== prevState.index) {
       return {index: nextProps.index};
     }
@@ -20,15 +20,18 @@ export default class XRouter extends PureComponent<$XRouterProps, $XRouterState>
       index={this.state.index}
       onTransitionEnd={() => this.setState({transitionned: this.state.index})}
     >
-      {React.Children.toArray(this.props.children).map((child, childIndex) => (
-        <child.type
-          key={childIndex}
-          {...{
-            ...child.props,
-            ...this.state,
-          }}
-        />
-      ))}
+      {
+        React
+          .Children
+          .toArray(this.props.children)
+          .map(child => React.cloneElement(
+            child,
+            {
+              ...child.props,
+              ...this.state,
+            },
+          ))
+      }
     </SwipeableViews>
   );
 }

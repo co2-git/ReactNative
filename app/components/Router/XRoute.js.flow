@@ -7,12 +7,15 @@ declare type $XRouteProps = {|
   },
   +routeIndex: number,
   +style?: Object,
+  +index?: number,
+  +switching?: ?number,
+  +transitionned?: ?number,
 |};
 
 declare type $XRouteStatus =
   | 'off'
   | 'entering'
-  | 'transitionend'
+  | 'transitionned'
   ;
 
 declare type $XRouteState = {|

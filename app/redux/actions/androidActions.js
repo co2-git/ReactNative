@@ -1,7 +1,7 @@
 // @flow
 import path from 'path';
-// eslint-disable-next-line import/no-unresolved, import/extensions
-import {remote} from 'electron';
+// $FlowFixMe No electron
+import {remote} from 'electron'; // eslint-disable-line import/no-unresolved, import/extensions
 import capitalize from 'lodash/capitalize';
 
 import * as types from '../types';

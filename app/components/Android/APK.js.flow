@@ -11,7 +11,8 @@ declare type $APKData = {|
 |};
 
 declare type $APKOwnProps = {|
-  +data: $APKData,
+  +app: $App,
+  +data: ?$APKData,
   +loading: boolean,
   +lookAgain: () => void,
   +subtitle: string,

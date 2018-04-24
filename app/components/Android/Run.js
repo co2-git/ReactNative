@@ -88,7 +88,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
       this.setState({running: true, showTerminal: true});
     }
   };
-  onChangeOption = (key: string, option: $CliOptions, value: $AnyPrimitive) => this.setState({
+  onChangeOption = (key: string, option: $CliOptions, value: $JSON) => this.setState({
     options: {
       ...this.state.options,
       [key]: value,

@@ -1,12 +1,17 @@
 // @flow
 
+declare type $LayoutOwnProps = {|
+  +persistor: $ReduxPersistor,
+|};
+
 declare type $LayoutConnectProps = {|
   +error: ?Error,
 |};
 
 declare type $LayoutProps =
   & $LayoutConnectProps
-  ; // eslint-disable-line semi-style
+  & $LayoutOwnProps
+  ;
 
 declare type $LayoutState = {|
   showDrawer: boolean,

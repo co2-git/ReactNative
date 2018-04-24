@@ -27,8 +27,8 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
     pid: null,
   };
   componentDidMount = () => {
-    const {command, ...options} = this.props;
-    this.run(command, options);
+    const {command, cwd = '', inputHandlers = []} = this.props;
+    this.run(command, {cwd, inputHandlers});
   };
   componentDidUpdate = () => {
     const terminal = document.getElementById('terminal');
@@ -111,8 +111,8 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
                 this.ps.emit('write', this.state.command);
                 this.setState({command: ''});
               } else {
-                const {cwd} = this.props;
-                this.run(this.state.command, {cwd});
+                const {cwd = '/', inputHandlers = []} = this.props;
+                this.run(this.state.command, {cwd, inputHandlers});
                 this.setState({command: ''});
               }
             }
@@ -122,7 +122,13 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
     </Card>
   );
   onKill = () => this.ps.emit('kill');
-  run = (command, {cwd, inputHandlers = []}) => {
+  run = (
+    command: string,
+    {cwd, inputHandlers = []}: {
+      +cwd: string,
+      +inputHandlers: $InputHandler[],
+    },
+  ) => {
     this.ps = exec(command, {cwd});
     this.ps.on('pid', pid => this.setState({pid}));
     this.ps.on('data', data => this.setState({output: [...this.state.output, data]}, () => {
