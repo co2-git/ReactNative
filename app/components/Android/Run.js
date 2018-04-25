@@ -9,7 +9,6 @@ import React, {PureComponent} from 'react';
 import {adjustWithCard} from '../../styles/vars/metrics';
 import {lightInfoMessage, linkStyle} from '../../styles/main';
 import AndroidRunOptions from './RunOptions';
-import Animated from '../Base/Animated';
 import Terminal from '../Terminal/Console';
 
 class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
@@ -20,7 +19,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
   };
   terminal: Terminal;
   render = () => (
-    <Animated rubberBand>
+    <div>
       <Card>
         <CardHeader
           actAsExpander
@@ -59,6 +58,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
             <Terminal
               command={this.makeCommand()}
               cwd={this.props.app.path}
+              onVerifyDone={this.onVerifyDone}
               onDone={() => this.setState({running: false})}
               onFail={() => this.setState({running: false})}
               ref={(terminal) => {
@@ -70,7 +70,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
           )}
         </CardText>
       </Card>
-    </Animated>
+    </div>
   );
   onActionClick = () => {
     if (this.state.running) {
@@ -88,13 +88,26 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
       this.setState({running: true, showTerminal: true});
     }
   };
-  onChangeOption = (key: string, option: $CliOptions, value: $AnyPrimitive) => this.setState({
+  onChangeOption = (key: string, option: $CliOptions, value: $JSON) => this.setState({
     options: {
       ...this.state.options,
       [key]: value,
     },
   });
-  makeCommand = () => {
+  onVerifyDone = (output: $Output[]): Promise<void> => new Promise(async (resolve, reject) => {
+    const messages = [];
+    for (const singleOutput of output) {
+      messages.push(singleOutput.message);
+    }
+    if (
+      /FAILURE: Build failed with an exception/.test(messages.join('')) ||
+      /BUILD FAILED/.test(messages.join(''))
+    ) {
+      reject(new Error('Build failed'));
+    }
+    resolve();
+  });
+  makeCommand = (): string => {
     const cmd = 'react-native run-android';
     const options = [];
     for (const option in this.state.options) {

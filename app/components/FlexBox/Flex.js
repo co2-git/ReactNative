@@ -3,6 +3,8 @@ import omit from 'lodash/omit';
 import React from 'react';
 
 const ownProps = [
+  'alignY',
+  'around',
   'between',
   'center',
   'column',
@@ -24,9 +26,17 @@ const makeStyle = (props: $FlexProps) => {
   if (props.between) {
     style.justifyContent = 'space-between';
   }
+  if (props.around) {
+    style.justifyContent = 'space-around';
+  }
   if (props.center) {
     style.justifyContent = 'center';
     style.alignItems = 'center';
+  }
+  if (props.alignY && style.flexDirection === 'row') {
+    if (props.alignY === 'center' || props.alignY === true) {
+      style.alignItems = 'center';
+    }
   }
   return style;
 };

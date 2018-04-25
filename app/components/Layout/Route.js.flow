@@ -1,0 +1,15 @@
+// @flow
+
+declare type $RouteConfig = {|
+  +index: number,
+  +loading?: () => React$Element<*>,
+  +selector: (state: $State, props: ?$JSONObject) => $JSONObject,
+|};
+
+declare type $BaseRouteProps = {};
+
+declare type $BaseRouteState = {|
+  loaded: boolean,
+  mounted: boolean,
+  readyToLoad: boolean,
+|};

@@ -4,7 +4,6 @@ import * as reducers from '../app/redux/reducers';
 
 declare type $Emitter = EventEmitter;
 
-// eslint-disable-next-line no-undef
 declare type $App = {
   path: string,
 };
@@ -27,11 +26,24 @@ declare type $CliOptionsType =
 declare type $CliOptions = {|
   +type: $CliOptionsType,
   +label?: string,
-  +default: any,
+  +default: $JSON,
 |};
 
-declare type $AnyPrimitive =
-  | string
-  | boolean
-  | number
+declare type $JSON = any;
+declare type $JSONObject = Object;
+
+declare type $LogLevel =
+  | 'all'
+  | 'info'
+  | 'warn'
+  | 'error'
+  | 'fatal'
   ;
+
+declare type $ReduxActionPayload = {
+  [attr: string]: $JSON,
+};
+
+declare type $ReduxPersistor = {|
+  +purge: () => Promise<*>,
+|};

@@ -14,7 +14,10 @@
 
 [libs]
 ./flow/app.js.flow
+./app/components/Android/APK.js.flow
+./app/components/Android/APKs.js.flow
 ./app/components/Android/Home.js.flow
+./app/components/Android/Logs.js.flow
 ./app/components/Android/Run.js.flow
 ./app/components/Android/RunOptions.js.flow
 ./app/components/App/App.js.flow
@@ -24,14 +27,18 @@
 ./app/components/Base/IconWithLabel.js.flow
 ./app/components/FlexBox/Flex.js.flow
 ./app/components/Layout/AppCard.js.flow
+./app/components/Layout/DrawerMenu.js.flow
 ./app/components/Layout/Header.js.flow
 ./app/components/Layout/Home.js.flow
 ./app/components/Layout/Init.js.flow
 ./app/components/Layout/Layout.js.flow
 ./app/components/Layout/Open.js.flow
 ./app/components/Layout/Page.js.flow
+./app/components/Layout/Route.js.flow
 ./app/components/Layout/Router.js.flow
 ./app/components/ReactNative/Info.js.flow
+./app/components/Router/XRoute.js.flow
+./app/components/Router/XRouter.js.flow
 ./app/components/Terminal/Console.js.flow
 
 [options]

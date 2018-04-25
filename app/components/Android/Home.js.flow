@@ -4,9 +4,10 @@ declare type $AndroidHomeOwnProps = {|
   +app: $App,
 |};
 
-declare type $AndroidHomeProps =
-  & $AndroidHomeOwnProps;
-
-declare type $AndroidHomeState = {|
-  index: number,
+declare type $AndroidHomeConnectProps = {|
+  +index: number,
 |};
+
+declare type $AndroidHomeProps =
+  & $AndroidHomeOwnProps
+  & $AndroidHomeConnectProps;
