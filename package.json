@@ -66,5 +66,8 @@
   },
   "wiki": {
     "url": "https://github.com/co2-git/ReactNative/wiki"
+  },
+  "engines": {
+    "npm": "^6.0.0"
   }
 }
