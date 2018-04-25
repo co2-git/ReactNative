@@ -5,6 +5,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      - CI_PULL_REQUEST: true
     branches:
       only:
         - master
