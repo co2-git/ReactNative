@@ -35,9 +35,9 @@ jobs:
 
       # run tests!
       - run: yarn test
-  general:
-    branches:
-      - master
-      - develop
-      - /^v\d+\.\d+\.\d+$/
-      - /^version\/\d+\.\d+\.\d+$/
+general:
+  branches:
+    - master
+    - develop
+    - /^v\d+\.\d+\.\d+$/
+    - /^version\/\d+\.\d+\.\d+$/
