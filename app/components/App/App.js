@@ -7,9 +7,10 @@ import AndroidHome from '../Android/Home';
 import AppBar from './AppBar';
 import AppBottomBar from './AppBottomBar';
 import Info from '../ReactNative/Info';
+import IOSHome from '../IOS/Home';
 import Page from '../Layout/Page';
-import XRouter from '../Router/XRouter';
 import XRoute from '../Router/XRoute';
+import XRouter from '../Router/XRouter';
 
 const App = (props: $AppProps) => (
   <Page style={{display: 'flex', flexDirection: 'column'}}>
@@ -38,7 +39,7 @@ const App = (props: $AppProps) => (
         />
         <XRoute
           routeIndex={3}
-          component={() => <div>iOS</div>}
+          component={IOSHome}
           componentProps={{app: props.app}}
           style={appTabStyle}
         />

@@ -17,15 +17,13 @@
 ./app/components/Android/APK.js.flow
 ./app/components/Android/APKs.js.flow
 ./app/components/Android/Home.js.flow
-./app/components/Android/Logs.js.flow
-./app/components/Android/Run.js.flow
-./app/components/Android/RunOptions.js.flow
 ./app/components/App/App.js.flow
 ./app/components/App/AppBar.js.flow
 ./app/components/App/AppBottomBar.js.flow
 ./app/components/Base/Animated.js.flow
 ./app/components/Base/IconWithLabel.js.flow
 ./app/components/FlexBox/Flex.js.flow
+./app/components/IOS/Home.js.flow
 ./app/components/Layout/AppCard.js.flow
 ./app/components/Layout/DrawerMenu.js.flow
 ./app/components/Layout/Header.js.flow
@@ -36,6 +34,10 @@
 ./app/components/Layout/Page.js.flow
 ./app/components/Layout/Route.js.flow
 ./app/components/Layout/Router.js.flow
+./app/components/Platform/Home.js.flow
+./app/components/Platform/Logs.js.flow
+./app/components/Platform/Run.js.flow
+./app/components/Platform/RunOptions.js.flow
 ./app/components/ReactNative/Info.js.flow
 ./app/components/Router/XRoute.js.flow
 ./app/components/Router/XRouter.js.flow

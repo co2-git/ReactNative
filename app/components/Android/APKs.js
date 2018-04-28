@@ -63,7 +63,9 @@ class APKs extends PureComponent<$APKsProps, $APKsState> {
       });
       this.setState(partial2);
     } catch (error) {
-      raiseError(error);
+      if (error.code !== 'ENOENT') {
+        raiseError(error);
+      }
     }
   }
 }

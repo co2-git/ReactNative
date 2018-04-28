@@ -8,10 +8,10 @@ import React, {PureComponent} from 'react';
 
 import {adjustWithCard} from '../../styles/vars/metrics';
 import {lightInfoMessage, linkStyle} from '../../styles/main';
-import AndroidRunOptions from './RunOptions';
+import PlatformRunOptions from './RunOptions';
 import Terminal from '../Terminal/Console';
 
-class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
+class RunPlatform extends PureComponent<$RunPlatformProps, $RunPlatformState> {
   state = {
     options: {},
     running: false,
@@ -23,13 +23,19 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
       <Card>
         <CardHeader
           actAsExpander
-          avatar={<IconButton><AndroidIcon /></IconButton>}
+          avatar={this.props.platform === 'android' ? (
+            <IconButton><AndroidIcon color="#777" /></IconButton>
+          ) : (
+            <i className="icon-apple" style={{fontSize: 24, color: '#777'}} />
+          )}
           showExpandableButton
-          subtitle="Install your app on Android device (or emulator)"
-          title="Run Android"
+          subtitle={`Install your app on ${this.props.platform} device (or ${
+            this.props.platform === 'android' ? 'emulator' : 'simulator'
+          })`}
+          title={`Run ${this.props.platform}`}
         />
         <CardText expandable>
-          <AndroidRunOptions
+          <PlatformRunOptions
             onChange={this.onChangeOption}
           />
         </CardText>
@@ -108,7 +114,7 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
     resolve();
   });
   makeCommand = (): string => {
-    const cmd = 'react-native run-android';
+    const cmd = `react-native run-${this.props.platform}`;
     const options = [];
     for (const option in this.state.options) {
       if (typeof this.state.options[option] === 'boolean') {
@@ -122,4 +128,4 @@ class RunAndroid extends PureComponent<$RunAndroidProps, $RunAndroidState> {
   seeBug1 = () => open('https://github.com/co2-git/ReactNative/issues/35');
 }
 
-export default RunAndroid;
+export default RunPlatform;

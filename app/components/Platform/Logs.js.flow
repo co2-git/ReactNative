@@ -1,0 +1,14 @@
+// @flow
+
+declare type $PlatformLogsOwnProps = {|
+  +app: $App,
+  +platform: $Platform,
+|};
+
+declare type $PlatformLogsProps =
+  & $PlatformLogsOwnProps;
+
+declare type $PlatformLogsState = {|
+  running: boolean,
+  showTerminal: boolean,
+|};

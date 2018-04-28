@@ -14,7 +14,7 @@ for (const key in android.runOptions) {
   defaultState[key] = android.runOptions[key].default;
 }
 
-class AndroidRunOptions extends PureComponent<$AndroidRunOptionsProps, $AndroidRunOptionsState> {
+class PlatformRunOptions extends PureComponent<$PlatformRunOptionsProps, $PlatformRunOptionsState> {
   state = {options: {...defaultState}};
   render = () => (
     <div>
@@ -102,4 +102,4 @@ class AndroidRunOptions extends PureComponent<$AndroidRunOptionsProps, $AndroidR
   );
 }
 
-export default AndroidRunOptions;
+export default PlatformRunOptions;
