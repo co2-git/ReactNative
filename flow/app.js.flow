@@ -47,3 +47,8 @@ declare type $ReduxActionPayload = {
 declare type $ReduxPersistor = {|
   +purge: () => Promise<*>,
 |};
+
+declare type $Platform =
+  | 'android'
+  | 'ios'
+  ;

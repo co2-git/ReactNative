@@ -1,7 +1,7 @@
 // @flow
 
 declare type $XRouterProps = {|
-  +children: React$Element<*>[],
+  +children: Array<?React$Element<*> | boolean>,
   +index: number,
 |};
 

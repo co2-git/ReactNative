@@ -3,11 +3,11 @@ import React from 'react';
 
 import PlatformHome from '../Platform/Home';
 
-const AndroidHome = ({app}: $AndroidHomeProps) => (
+const IOSHome = ({app}: $IOSHomeProps) => (
   <PlatformHome
     app={app}
-    platform="android"
+    platform="ios"
   />
 );
 
-export default AndroidHome;
+export default IOSHome;

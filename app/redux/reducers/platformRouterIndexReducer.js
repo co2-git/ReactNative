@@ -3,12 +3,12 @@ import * as types from '../types';
 const initialState = {};
 
 const reducer = (state = initialState, action) => {
-  if (action.type === types.SWITCHED_APP_ROUTE) {
+  if (action.type === types.SWITCH_PLATFORM_ROUTE) {
     return {
       ...state,
       [action.payload.app.path]: {
-        index: action.payload.index,
-        switched: true,
+        ...(state[action.payload.app.path] || {}),
+        [action.payload.platform]: action.payload.index,
       },
     };
   }

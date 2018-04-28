@@ -1,0 +1,14 @@
+// @flow
+
+declare type $PlatformHomeOwnProps = {|
+  +app: $App,
+  +platform: $Platform,
+|};
+
+declare type $PlatformHomeConnectProps = {|
+  +index: number,
+|};
+
+declare type $PlatformHomeProps =
+  & $PlatformHomeOwnProps
+  & $PlatformHomeConnectProps;

@@ -24,8 +24,11 @@ export const getAPK = async (app: $App, variant: string = 'debug') => {
       size: convertBytesToMegaBytes(stats.size),
     };
   } catch (error) {
-    dispatchError(error, types.FAILED_GETTING_APK, {app, variant});
-    return null;
+    if (error.code !== 'ENOENT') {
+      dispatchError(error, types.FAILED_GETTING_APK, {app, variant});
+      return null;
+    }
+    return error;
   }
 };
 

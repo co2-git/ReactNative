@@ -1,0 +1,17 @@
+// @flow
+
+declare type $RunPlatformOwnProps = {|
+  +app: $App,
+  +platform: $Platform,
+|};
+
+declare type $RunPlatformProps =
+  & $RunPlatformOwnProps;
+
+declare type $RunPlatformState = {|
+  options: {
+    [key: string]: any,
+  },
+  running: boolean,
+  showTerminal: boolean,
+|};

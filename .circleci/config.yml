@@ -5,8 +5,6 @@
 version: 2
 jobs:
   build:
-    environment:
-      - CIRCLE_PULL_REQUEST: true
     branches:
       only:
         - master
