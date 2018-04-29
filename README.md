@@ -1,5 +1,5 @@
 ReactNative
-<img url="https://circleci.com/gh/co2-git/ReactNative.svg?style=shield&circle-token=f91cf242b34093f5cbaea72a9c8ff0d72ac7de48" />
+<img src="https://circleci.com/gh/co2-git/ReactNative.svg?style=shield&circle-token=f91cf242b34093f5cbaea72a9c8ff0d72ac7de48" />
 ===
 
 GUI client for React Native. It is built with electron so it works on Linux, Mac and Windows.
