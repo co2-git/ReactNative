@@ -12,7 +12,7 @@
     "make:osx": "yarn make darwin",
     "make:windows": "yarn make win32",
     "make": "bash scripts/build.sh $npm_package_name $npm_package_version",
-    "pr": "bash scripts/pr.sh v$npm_package_version",
+    "pr": "yarn test && bash scripts/pr.sh v$npm_package_version",
     "start": "electron main.js",
     "test": "yarn eslint && yarn flow"
   },
