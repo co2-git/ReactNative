@@ -1,6 +1,6 @@
 {
   "name": "ReactNative",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "scripts": {
     "babel": "babel --out-dir dist/ app/",
     "branch": "bash scripts/branch.sh v$npm_package_version",
