@@ -53,7 +53,7 @@ Help us keep this app good and free!
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=francooisrv&url=https://github.com/co2-git/ReactNative&title=badges&language=&tags=github&category=software)
 
-## Star this project on GitHub
+## Star this project on GitHub
 
 This is helping us tremendously and does not require any financial contributions on your side 😇
 
