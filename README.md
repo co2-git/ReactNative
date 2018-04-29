@@ -35,17 +35,23 @@ v0.1.5 is out! Choose your weapon.
 
 ![Home](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.5/Home.png)
 
-## Init app
+## Run Android
 
-![Init app modal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.1/Init_App_Modal.png)
+![Init app modal](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.5/Run-Android-Done.png)
 
-## App info
+## Expo QR
 
-![App info](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.5/Info.png)
+![App info](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.5/Expo-QR.png)
 
 ## More
 
 [View more screenshots!](https://github.com/co2-git/ReactNative/wiki/Screenshots)
+
+# Support
+
+Help us keep this app good and free!
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=francooisrv&url=https://github.com/co2-git/ReactNative&title=badges&language=&tags=github&category=software)
 
 # License
 
