@@ -1,7 +1,9 @@
 // @flow
 import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
 import MaterialUIAppBar from 'material-ui/AppBar';
 import NavigationBack from 'material-ui/svg-icons/navigation/arrow-back';
+import DoneIcon from 'material-ui/svg-icons/action/done';
 import path from 'path';
 import React from 'react';
 
@@ -16,6 +18,12 @@ const AppBar = ({app}: $AppBarProps) => (
       </IconButton>
     )}
     onLeftIconButtonClick={() => switchRoute(0)}
+    iconElementRight={app.isExpo ? (
+      <FlatButton
+        label="Expo App"
+        icon={<DoneIcon />}
+      />
+    ) : <div />}
   />
 );
 

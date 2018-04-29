@@ -6,11 +6,13 @@ import Chip from 'material-ui/Chip';
 import DoneIcon from 'material-ui/svg-icons/action/done';
 import ErrorIcon from 'material-ui/svg-icons/alert/error';
 import map from 'lodash/map';
+import filter from 'lodash/filter';
 import OpenFolderIcon from 'material-ui/svg-icons/file/folder-open';
 import React, {PureComponent} from 'react';
 import stripAnsi from 'strip-ansi';
 import TermIcon from 'material-ui/svg-icons/action/code';
 import TextField from 'material-ui/TextField';
+import anser from 'anser';
 
 import {consoleStyle} from '../../styles/main';
 import exec from '../../lib/exec';
@@ -91,14 +93,7 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
       </CardActions>
       <CardText expandable>
         <div style={consoleStyle} id="terminal">
-          {map(this.state.output, (output, index) => {
-            const lines = stripAnsi(output.message).split('\n');
-            return (
-              <div key={index}>
-                {map(lines, (line, lineIndex) => <div key={lineIndex}>{line}</div>)}
-              </div>
-            );
-          })}
+          {this.renderOutput()}
         </div>
         <TextField
           hintText="Run command"
@@ -189,6 +184,66 @@ class Terminal extends PureComponent<$TerminalProps, $TerminalState> {
     }
     message += ')';
     return message;
+  }
+  renderOutput = () => {
+    const output = map(this.state.output, 'message').join('');
+    const lines = output.split(/\n/);
+    const blocks = map(lines, line => anser.ansiToJson(line));
+    let isQR = false;
+    let startQR = false;
+    let endQR = false;
+    return map(blocks, (block, blockIndex) => {
+      const style = {whiteSpace: 'pre-wrap'};
+      const lineStyle = {};
+      if (
+        lines[blockIndex].trim() === "You'll find the QR scanner on the Projects tab of the app."
+      ) {
+        isQR = true;
+        startQR = true;
+      } else {
+        startQR = false;
+      }
+      if (
+        lines[blockIndex].trim() === "Or enter this address in the Expo app's search bar:"
+      ) {
+        isQR = false;
+        endQR = true;
+      } else {
+        endQR = false;
+      }
+      if (isQR && !startQR) {
+        lineStyle.lineHeight = 0.5;
+        lineStyle.padding = 0;
+      }
+      if (startQR) {
+        lineStyle.marginBottom = '1em';
+      }
+      if (endQR) {
+        lineStyle.marginTop = '1em';
+      }
+      return (
+        <div key={blockIndex} style={lineStyle}>
+          {map(block, (content, contentIndex) => (
+            <span
+              key={contentIndex}
+              style={{...style, backgroundColor: `rgb(${content.bg})`}}>
+              {content.content}
+            </span>
+          ))}
+        </div>
+      );
+    });
+    // map(
+    //   filter(
+    //     anser.ansiToJson(map(this.state.output, 'message').join('')),
+    //     'was_processed',
+    //   ),
+    //   (block, index) => (
+    //     <div key={index} style={{color: block.fg || 'white'}}>
+    //       {block.content}
+    //     </div>
+    //   ),
+    // )
   }
   stop = () => {
     if (!this.state.done) {

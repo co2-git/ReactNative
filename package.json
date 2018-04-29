@@ -17,6 +17,8 @@
     "test": "yarn eslint && yarn flow"
   },
   "dependencies": {
+    "anser": "^1.4.6",
+    "ansi-to-react": "^2.0.6",
     "babel-polyfill": "^6.26.0",
     "chokidar": "^2.0.3",
     "electron-is-dev": "^0.3.0",

@@ -18,9 +18,10 @@ export const consoleStyle = {
   boxShadow: '1px 1px 2px 2px rgba(0, 0, 0, 0.25)',
   color: '#fff',
   marginTop: 12,
-  maxHeight: 300,
+  maxHeight: 350,
   overflow: 'auto',
   padding: 10,
+  lineHeight: 1.5,
 };
 
 export const linkStyle = {

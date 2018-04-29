@@ -17,25 +17,29 @@ import APKs from '../Android/APKs';
 const PlatformHome = ({app, index, platform}: $PlatformHomeProps) => (
   <div style={{margin: 12}}>
     <div>
-      <BottomNavigation selectedIndex={index} style={{marginBottom: 12}}>
-        <BottomNavigationItem
-          label="Run"
-          onClick={() => switchPlatformRoute(platform, app, 0)}
-          icon={<PlayIcon />}
-        />
-        <BottomNavigationItem
-          label="Logs"
-          onClick={() => switchPlatformRoute(platform, app, 1)}
-          icon={<LogIcon />}
-        />
-        {platform === 'android' && (
+      {!app.isExpo && (
+        <BottomNavigation selectedIndex={index} style={{marginBottom: 12}}>
           <BottomNavigationItem
-            label="APKs"
-            onClick={() => switchPlatformRoute(platform, app, 2)}
-            icon={<PackageIcon />}
+            label="Run"
+            onClick={() => switchPlatformRoute(platform, app, 0)}
+            icon={<PlayIcon />}
           />
-        )}
-      </BottomNavigation>
+          {!app.isExpo && (
+            <BottomNavigationItem
+              label="Logs"
+              onClick={() => switchPlatformRoute(platform, app, 1)}
+              icon={<LogIcon />}
+            />
+          )}
+          {platform === 'android' && (
+            <BottomNavigationItem
+              label="APKs"
+              onClick={() => switchPlatformRoute(platform, app, 2)}
+              icon={<PackageIcon />}
+            />
+          )}
+        </BottomNavigation>
+      )}
     </div>
     <div>
       <XRouter index={index}>
@@ -44,12 +48,14 @@ const PlatformHome = ({app, index, platform}: $PlatformHomeProps) => (
           component={Run}
           componentProps={{app, platform}}
         />
-        <XRoute
-          routeIndex={1}
-          component={Logs}
-          componentProps={{app, platform}}
-        />
-        {platform === 'android' && (
+        {!app.isExpo && (
+          <XRoute
+            routeIndex={1}
+            component={Logs}
+            componentProps={{app, platform}}
+          />
+        )}
+        {platform === 'android' && !app.isExpo && (
           <XRoute
             routeIndex={2}
             component={APKs}
