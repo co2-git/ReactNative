@@ -29,9 +29,12 @@ class RunPlatform extends PureComponent<$RunPlatformProps, $RunPlatformState> {
             <i className="icon-apple" style={{fontSize: 24, color: '#777'}} />
           )}
           showExpandableButton
-          subtitle={`Install your app on ${this.props.platform} device (or ${
-            this.props.platform === 'android' ? 'emulator' : 'simulator'
-          })`}
+          subtitle={
+            this.props.app.isExpo ? `Launch expo app for ${this.props.platform}` :
+            `Install and run your app on ${this.props.platform} device (or ${
+              this.props.platform === 'android' ? 'emulator' : 'simulator'
+            })`
+          }
           title={`Run ${this.props.platform}`}
         />
         <CardText expandable>
@@ -114,7 +117,9 @@ class RunPlatform extends PureComponent<$RunPlatformProps, $RunPlatformState> {
     resolve();
   });
   makeCommand = (): string => {
-    const cmd = `react-native run-${this.props.platform}`;
+    const cmd = this.props.app.isExpo ?
+      `npm run ${this.props.platform}` :
+      `react-native run-${this.props.platform}`;
     const options = [];
     for (const option in this.state.options) {
       if (typeof this.state.options[option] === 'boolean') {

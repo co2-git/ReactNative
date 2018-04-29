@@ -7,7 +7,7 @@ const initialState = [];
 
 const reducer = (state = initialState, action) => {
   if (action.type === types.OPEN_APP) {
-    return uniqBy([...state, {path: action.payload.path}], 'path');
+    return uniqBy([...state, action.payload], 'path');
   }
   if (action.type === types.CLOSE_APP) {
     return reject(state, {path: action.payload.app.path});
