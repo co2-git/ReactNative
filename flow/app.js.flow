@@ -5,6 +5,7 @@ import * as reducers from '../app/redux/reducers';
 declare type $Emitter = EventEmitter;
 
 declare type $App = {
+  isExpo: boolean,
   path: string,
 };
 
