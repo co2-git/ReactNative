@@ -4,6 +4,7 @@
   "scripts": {
     "babel": "babel --out-dir dist/ app/",
     "branch": "bash scripts/branch.sh v$npm_package_version",
+    "bump": "bash scripts/bump.sh",
     "eslint": "eslint app --fix",
     "fix": "yarn test && yarn pr",
     "flow": "flow",
