@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import {remote} from 'electron';
 import first from 'lodash/first';
-import find from 'lodash/find';
 
 import store from '../store';
 import * as types from '../types';

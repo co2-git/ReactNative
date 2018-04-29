@@ -1,4 +1,5 @@
 ReactNative
+[![CircleCI](https://circleci.com/gh/co2-git/ReactNative.svg?style=shield)](https://circleci.com/gh/co2-git/ReactNative)
 ===
 
 GUI client for React Native. It is built with electron so it works on Linux, Mac and Windows.
