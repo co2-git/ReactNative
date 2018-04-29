@@ -5,7 +5,7 @@ ReactNative
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=francooisrv&url=https://github.com/co2-git/ReactNative&title=badges&language=&tags=github&category=software) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/co2-git/ReactNative/graphs/commit-activity) [![GitHub license](https://img.shields.io/github/license/co2-git/ReactNative.svg)](https://github.com/co2-git/ReactNative/blob/master/LICENSE)
 
-[![Github Releases (by Release)](https://img.shields.io/github/downloads/co2-git/ReactNative/v0.1.4/total.svg)](https://GitHub.com/co2-git/ReactNative/releases/) [![GitHub contributors](https://img.shields.io/github/contributors/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/graphs/contributors/)
+[![Github Releases (by Release)](https://img.shields.io/github/downloads/co2-git/ReactNative/v0.1.5/total.svg)](https://GitHub.com/co2-git/ReactNative/releases/) [![GitHub contributors](https://img.shields.io/github/contributors/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/graphs/contributors/)
 
 [![GitHub stars](https://img.shields.io/github/stars/co2-git/ReactNative.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/co2-git/ReactNative/stargazers/) [![GitHub forks](https://img.shields.io/github/forks/co2-git/ReactNative.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/co2-git/ReactNative/network/)
 
@@ -18,7 +18,7 @@ GUI client for React Native. It is built with electron so it works on Linux, Mac
 
 # Downloads
 
-v0.1.4 is out! Choose your weapon.
+v0.1.5 is out! Choose your weapon.
 
 
 [<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=11RAaB8DVhgSytUIDvG80zLEcd7FMLiIe)
@@ -33,7 +33,7 @@ v0.1.4 is out! Choose your weapon.
 
 ## Home screen
 
-![Home](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.4/Home.png)
+![Home](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.5/Home.png)
 
 ## Init app
 
@@ -41,7 +41,7 @@ v0.1.4 is out! Choose your weapon.
 
 ## App info
 
-![App info](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.4/Info.png)
+![App info](https://raw.githubusercontent.com/co2-git/ReactNative/master/assets/screenshots/v0.1.5/Info.png)
 
 ## More
 
