@@ -26,7 +26,7 @@ class Layout extends PureComponent<$LayoutProps, $LayoutState> {
             <IconButton>
               <CloseIcon onClick={this.onToggleDrawer} />
             </IconButton>
-            <DrawerMenu />
+            <DrawerMenu persistor={this.props.persistor} />
           </div>
         </Drawer>
 

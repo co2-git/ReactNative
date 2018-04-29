@@ -31,7 +31,7 @@ class Open extends PureComponent<$OpenProps, $OpenState> {
             label="Open"
             primary
             style={{margin: 12}}
-            onClick={() => appsActions.openApp(null)}
+            onClick={() => appsActions.openApp()}
           />
           <RaisedButton
             label="Init"

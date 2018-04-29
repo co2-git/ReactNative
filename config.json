@@ -1,6 +1,20 @@
 {
+  "app": {
+    "appMenu": [
+      {"name": "Info"},
+      {"name": "Start"},
+      {"name": "Android"},
+      {"name": "iOS"},
+      {"name": "Upgrade"},
+      {"name": "Native"},
+      {"name": "Eject"}
+    ]
+  },
   "now": {
     "url": "https://reactnative-zrkchnlzzk.now.sh"
+  },
+  "circleci": {
+    "token": "f91cf242b34093f5cbaea72a9c8ff0d72ac7de48"
   },
   "android": {
     "runOptions": {
@@ -56,6 +70,9 @@
         "label": "Path to the CLI configuration file",
         "default": ""
       }
+    },
+    "paths": {
+      "apk": "android/app/build/outputs/apk"
     }
   }
 }

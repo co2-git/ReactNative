@@ -2,18 +2,23 @@
   "name": "ReactNative",
   "version": "0.1.5",
   "scripts": {
-    "start": "electron main.js",
     "babel": "babel --out-dir dist/ app/",
-    "make": "bash scripts/build.sh $npm_package_name $npm_package_version",
-    "make:osx": "yarn make darwin",
-    "make:linux": "yarn make linux",
-    "make:windows": "yarn make win32",
-    "make:all": "npm-run-parallel make:osx make:linux make:windows",
+    "branch": "bash scripts/branch.sh v$npm_package_version",
     "eslint": "eslint app --fix",
-    "test": "yarn eslint && yarn flow",
-    "flow": "flow"
+    "fix": "yarn test && yarn pr",
+    "flow": "flow",
+    "make:all": "npm-run-parallel make:osx make:linux make:windows",
+    "make:linux": "yarn make linux",
+    "make:osx": "yarn make darwin",
+    "make:windows": "yarn make win32",
+    "make": "bash scripts/build.sh $npm_package_name $npm_package_version",
+    "pr": "yarn test && bash scripts/pr.sh v$npm_package_version",
+    "start": "electron main.js",
+    "test": "yarn eslint && yarn flow"
   },
   "dependencies": {
+    "anser": "^1.4.6",
+    "ansi-to-react": "^2.0.6",
     "babel-polyfill": "^6.26.0",
     "chokidar": "^2.0.3",
     "electron-is-dev": "^0.3.0",
@@ -63,5 +68,8 @@
   },
   "wiki": {
     "url": "https://github.com/co2-git/ReactNative/wiki"
+  },
+  "engines": {
+    "npm": "^6.0.0"
   }
 }

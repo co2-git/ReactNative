@@ -3,7 +3,7 @@ import {
   grey500,
 } from 'material-ui/styles/colors';
 
-import {adjustWithCard} from './vars/metrics';
+import * as metrics from './vars/metrics';
 
 export const pageStyle = {
   boxSizing: 'border-box',
@@ -18,9 +18,10 @@ export const consoleStyle = {
   boxShadow: '1px 1px 2px 2px rgba(0, 0, 0, 0.25)',
   color: '#fff',
   marginTop: 12,
-  maxHeight: 300,
+  maxHeight: 350,
   overflow: 'auto',
   padding: 10,
+  lineHeight: 1.5,
 };
 
 export const linkStyle = {
@@ -33,8 +34,8 @@ export const lightInfoMessage = {
   color: grey500,
   fontSize: '105%',
   fontStyle: 'italic',
-  marginLeft: adjustWithCard,
-  marginRight: adjustWithCard,
+  marginLeft: metrics.adjustWithCard,
+  marginRight: metrics.adjustWithCard,
 };
 
 export const appTopBarStyle = {
@@ -51,4 +52,9 @@ export const appTabStyle = {
   overflow: 'auto',
   boxSizing: 'border-box',
   height: 'calc(100vh - 120px)',
+};
+
+export const logLevelToggleStyle = {
+  padding: metrics.gutter,
+  flexGrow: 2,
 };

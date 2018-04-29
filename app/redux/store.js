@@ -7,6 +7,7 @@ import * as reducers from './reducers';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['appsInView'],
 };
 
 const persistedReducer = persistReducer(persistConfig, combineReducers(reducers));

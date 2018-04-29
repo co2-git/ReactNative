@@ -1,0 +1,12 @@
+// @flow
+
+declare type $XRouterProps = {|
+  +children: Array<?React$Element<*> | boolean>,
+  +index: number,
+|};
+
+declare type $XRouterState = {|
+  index: number,
+  switching: ?number,
+  transitionned: ?number,
+|};

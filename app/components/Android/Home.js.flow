@@ -5,8 +5,5 @@ declare type $AndroidHomeOwnProps = {|
 |};
 
 declare type $AndroidHomeProps =
-  & $AndroidHomeOwnProps;
-
-declare type $AndroidHomeState = {|
-  index: number,
-|};
+  & $AndroidHomeOwnProps
+  ;

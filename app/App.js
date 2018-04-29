@@ -1,9 +1,10 @@
+// @flow
 import 'babel-polyfill';
 
 import {PersistGate} from 'redux-persist/integration/react';
+import {persistStore} from 'redux-persist';
 import {Provider} from 'react-redux';
 import React from 'react';
-import {persistStore} from 'redux-persist';
 
 import Layout from './components/Layout/Layout';
 import store from './redux/store';
@@ -14,12 +15,10 @@ const Loading = () => (
 
 const persistor = persistStore(store);
 
-// persistor.purge();
-
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={<Loading />} persistor={persistor}>
-      <Layout />
+      <Layout persistor={persistor} />
     </PersistGate>
   </Provider>
 );

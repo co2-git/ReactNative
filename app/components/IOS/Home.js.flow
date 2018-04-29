@@ -1,0 +1,9 @@
+// @flow
+
+declare type $IOSHomeOwnProps = {|
+  +app: $App,
+|};
+
+declare type $IOSHomeProps =
+  & $IOSHomeOwnProps
+  ;
