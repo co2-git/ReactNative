@@ -8,7 +8,6 @@ ReactNative
 [![Github Releases (by Release)](https://img.shields.io/github/downloads/co2-git/ReactNative/v0.1.4/total.svg)](https://GitHub.com/co2-git/ReactNative/releases/) [![GitHub forks](https://img.shields.io/github/forks/co2-git/ReactNative.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/co2-git/ReactNative/network/) [![GitHub contributors](https://img.shields.io/github/contributors/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/graphs/contributors/)
 
 [![GitHub issues](https://img.shields.io/github/issues/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/issues/) [![GitHub issues-closed](https://img.shields.io/github/issues-closed/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/issues?q=is%3Aissue+is%3Aclosed) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Naereen/badges.svg)](http://isitmaintained.com/project/Naereen/badges "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/co2-git/badges.svg)](http://isitmaintained.com/project/co2-git/badges "Percentage of issues still open")
-
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/pull/) [![GitHub pull-requests closed](https://img.shields.io/github/issues-pr-closed/co2-git/ReactNative.svg)](https://GitHub.com/co2-git/ReactNative/pull/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ===
 
