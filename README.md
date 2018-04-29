@@ -22,8 +22,8 @@ v0.1.5 is out! Choose your weapon.
 
 
 [<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=1DFnNEvYmCxbn4iHxMryW4VLpH1EgUE5V)
-[<img alt="Windows"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/120px-Windows_logo_-_2012_derivative.svg.png" />](https://drive.google.com/open?id=19wpU7GTZ2bIuOQ-f0Sz83Ql0_5uYa51w)
-[<img alt="Linux" src="http://www.linuxscrew.com/wp-content/uploads/2007/11/120px-crystal_128_penguin.png" />](https://drive.google.com/open?id=1k3pOql-XGQXbff7fdXI5zpsfoU0C3u63)
+[<img alt="Windows"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/120px-Windows_logo_-_2012_derivative.svg.png" />](https://drive.google.com/open?id=10lcjAbwP8Rby0-5WJMo-2new4SgMq0ti)
+[<img alt="Linux" src="http://www.linuxscrew.com/wp-content/uploads/2007/11/120px-crystal_128_penguin.png" />](https://drive.google.com/open?id=1HC_aOSJxKTL3mJG9JwjWPuJvxQTPNUAJ)
 
 # Docs
 
