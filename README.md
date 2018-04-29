@@ -18,7 +18,7 @@ GUI client for React Native. It is built with electron so it works on Linux, Mac
 
 # Downloads
 
-v0.1.5 is out! Choose your weapon.
+version [0.1.5](https://github.com/co2-git/ReactNative/releases/tag/v0.1.5) is out! Choose your weapon.
 
 
 [<img alt="Mac" src="http://clinsite.com/wp-content/uploads/2017/01/Apple-logo-120x120.png" />](https://drive.google.com/open?id=1DFnNEvYmCxbn4iHxMryW4VLpH1EgUE5V)
